@@ -21,7 +21,7 @@ if(isset($_GET['perfil']))
 }
 else
 {
-	include "../perfil/informacoes_iniciais_pj.php";
+	include "../perfil/usuario.php";
 }
 
  //carrega o rodapé

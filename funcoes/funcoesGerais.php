@@ -5,19 +5,10 @@ function habilitarErro()
 	error_reporting(E_ALL);
 }
 
-function isYoutubeVideo($link)
-{
-	$find = "/youtube/";
-	$objetivo = array();
 
-	$resultado = preg_match($find, $link, $objetivo);
-	return isset($objetivo[0]) ? $objetivo[0] : null;
-}
-
-function autenticaloginpf($login, $senha)
+function autenticaloginusuario($login, $senha)
 {
-	$sql = "SELECT * FROM pessoa_fisica AS pf
-	WHERE pf.cpf = '$login' LIMIT 0,1";
+	$sql = "SELECT * FROM users	WHERE login = '$login' LIMIT 0,1";
 	$con = bancoMysqli();
 	$query = mysqli_query($con,$sql);
 	//query que seleciona os campos que voltarão para na matriz
@@ -28,30 +19,14 @@ function autenticaloginpf($login, $senha)
 		{
 			// verifica se retorna usuário válido
 			$user = mysqli_fetch_array($query);
-			if($user['senha'] == md5($_POST['senha']))
+			if($user['password'] == md5($_POST['senha']))
 			{
 				// compara as senhas
 				session_start();
-				$_SESSION['login'] = $user['cpf'];
-				$_SESSION['nome'] = $user['nome'];
-				$_SESSION['idUser'] = $user['idPf'];
-				$_SESSION['tipoPessoa'] = "1";
-				$log = "Fez login.";
-				$cpf = $user['cpf'];
-				$query = "SELECT idNivelAcesso FROM pessoa_fisica WHERE cpf='$cpf'";
-				$envio = mysqli_query($con, $query);
-				while($row = mysqli_fetch_array($envio))
-				{
-					$nAcesso = $row['idNivelAcesso'];
-				}
-				if($nAcesso == 1)
-					header("Location: visual/index_pf.php");
-				else if($nAcesso == 2){
-					header("Location: visual/index_pf.php?perfil=smc_index");
-					$_SESSION['tipoUsuario'] = 2;
-				}
-				else if($nAcesso == 3)
-					header("Location:  visual/index_pf.php?perfil=comissao_index");
+				$_SESSION['login'] = $user['login'];
+				$_SESSION['nome'] = $user['local'];
+				$_SESSION['idUser'] = $user['id'];
+				header("Location: visual/index_usuario.php");
 			}
 			else
 			{
@@ -69,10 +44,10 @@ function autenticaloginpf($login, $senha)
 	}
 }
 
-function autenticaloginpj($login, $senha)
+
+function autenticaloginadministrador($login, $senha)
 {
-	$sql = "SELECT * FROM pessoa_juridica AS pj
-	WHERE pj.cnpj = '$login' LIMIT 0,1";
+	$sql = "SELECT * FROM administrators WHERE login = '$login' LIMIT 0,1";
 	$con = bancoMysqli();
 	$query = mysqli_query($con,$sql);
 	//query que seleciona os campos que voltarão para na matriz
@@ -83,16 +58,14 @@ function autenticaloginpj($login, $senha)
 		{
 			// verifica se retorna usuário válido
 			$user = mysqli_fetch_array($query);
-			if($user['senha'] == md5($_POST['senha']))
+			if($user['password'] == md5($_POST['senha']))
 			{
 				// compara as senhas
 				session_start();
-				$_SESSION['login'] = $user['cnpj'];
-				$_SESSION['nome'] = $user['razaoSocial'];
-				$_SESSION['idUser'] = $user['idPj'];
-				$_SESSION['tipoPessoa'] = "2";
-				$log = "Fez login.";
-				header("Location: visual/index_pj.php");
+				$_SESSION['login'] = $user['login'];
+				$_SESSION['nome'] = $user['local'];
+				$_SESSION['idUser'] = $user['id'];
+				header("Location: visual/index_usuario.php");
 			}
 			else
 			{
@@ -110,88 +83,6 @@ function autenticaloginpj($login, $senha)
 	}
 }
 
-function autenticaloginincentivadorpf($login, $senha)
-{
-	$sql = "SELECT * FROM incentivador_pessoa_fisica AS pf
-	WHERE pf.cpf = '$login' LIMIT 0,1";
-	$con = bancoMysqli();
-	$query = mysqli_query($con,$sql);
-	//query que seleciona os campos que voltarão para na matriz
-	if($query)
-	{
-		//verifica erro no banco de dados
-		if(mysqli_num_rows($query) > 0)
-		{
-			// verifica se retorna usuário válido
-			$user = mysqli_fetch_array($query);
-			if($user['senha'] == md5($_POST['senha']))
-			{
-				// compara as senhas
-				session_start();
-				$_SESSION['login'] = $user['cpf'];
-				$_SESSION['nome'] = $user['nome'];
-				$_SESSION['idUser'] = $user['idPf'];
-				$_SESSION['tipoPessoa'] = "1";
-				$log = "Fez login.";
-				$cpf = $user['cpf'];
-				header("Location: visual/incentivador_index_pf.php");
-			}
-			else
-			{
-				return "<font color='#FF0000'><strong>A senha está incorreta!</strong></font>";
-			}
-		}
-		else
-		{
-			return "<font color='#FF0000'><strong>O usuário não existe.</strong></font>";
-		}
-	}
-	else
-	{
-		return "<font color='#FF0000'><strong>Erro no banco de dados!</strong></font>";
-	}
-}
-
-function autenticaloginincentivadorpj($login, $senha)
-{
-	$sql = "SELECT * FROM incentivador_pessoa_juridica AS pj
-	WHERE pj.cnpj = '$login' LIMIT 0,1";
-	$con = bancoMysqli();
-	$query = mysqli_query($con,$sql);
-	//query que seleciona os campos que voltarão para na matriz
-	if($query)
-	{
-		//verifica erro no banco de dados
-		if(mysqli_num_rows($query) > 0)
-		{
-			// verifica se retorna usuário válido
-			$user = mysqli_fetch_array($query);
-			if($user['senha'] == md5($_POST['senha']))
-			{
-				// compara as senhas
-				session_start();
-				$_SESSION['login'] = $user['cnpj'];
-				$_SESSION['nome'] = $user['razaoSocial'];
-				$_SESSION['idUser'] = $user['idPj'];
-				$_SESSION['tipoPessoa'] = "2";
-				$log = "Fez login.";
-				header("Location: visual/incentivador_index_pj.php");
-			}
-			else
-			{
-				return "<font color='#FF0000'><strong>A senha está incorreta!</strong></font>";
-			}
-		}
-		else
-		{
-			return "<font color='#FF0000'><strong>O usuário não existe.</strong></font>";
-		}
-	}
-	else
-	{
-		return "<font color='#FF0000'><strong>Erro no banco de dados!</strong></font>";
-	}
-}
 
 //saudacao inicial
 function saudacao()
