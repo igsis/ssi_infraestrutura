@@ -7,6 +7,6 @@
 	{
 		$p = "index";
 	}
-	include "../funcoes/funcoesAdministrador.php";
+	include "administrador/funcoesAdministrador.php";
 	include "administrador/".$p.".php";
 ?>

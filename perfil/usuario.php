@@ -7,6 +7,6 @@
 	{
 		$p = "index";
 	}
-	include "../funcoes/funcoesUsuario.php";
+	include "usuario/includes/funcoesUsuario.php";
 	include "usuario/".$p.".php";
 ?>
