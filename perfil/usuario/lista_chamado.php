@@ -28,7 +28,7 @@ $idUser= $_SESSION['idUser'];
 						<?php
 							$sql = "SELECT * FROM problems
 									WHERE users_id = '$idUser'
-									ORDER BY problem_status_id, startDate DESC";
+									ORDER BY problem_status_id, startDate";
 							$query = mysqli_query($con,$sql);
 							$num = mysqli_num_rows($query);
 							if($num > 0)
