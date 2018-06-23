@@ -8,8 +8,8 @@ $pasta = "?perfil=usuario&p=";
 		<button class="dl-trigger">Open Menu</button>
 		<ul class="dl-menu">
 			<li><a href="?perfil=usuario">Home</a></li>
-			<li><a href="<?php echo $pasta ?>cadastra_chamado">Enviar chamado</a></li>
-			<li><a href="<?php echo $pasta ?>lista_chamado">Lista de Chamados</a></li>
+			<li><a href="<?php echo $pasta ?>cadastra">Enviar chamado</a></li>
+			<li><a href="<?php echo $pasta ?>lista">Lista de Chamados</a></li>
 			<li><a href="<?php echo $pasta ?>busca">Busca</a></li>
 			<li style="color:white;">-------------------------</li>
 			<li><a href="<?php echo $pasta ?>minhas_informacoes">">Minhas informações</a></li>
