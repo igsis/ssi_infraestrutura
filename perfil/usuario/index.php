@@ -1,6 +1,6 @@
 <?php //include 'includes/menu.php';?>
 
-<section id="services" class="home-section bg-white">
+<section id="list_items" class="home-section bg-white">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-offset-2 col-md-8">
@@ -9,7 +9,7 @@
                     <p>&nbsp;</p>
                     <h2>Módulo Usuário</h2>
                     <p>&nbsp;</p>
-					<h6>Esse módulo tem a função de gerenciar a produção de contratos artísticos da instituição, como propostas, declarações, pedidos de reserva de empenho entre outros documentos necessários para a contratação do artista.</h6>
+					<p>Esse módulo tem a função de gerenciar a produção de contratos artísticos da instituição, como propostas, declarações, pedidos de reserva de empenho entre outros documentos necessários para a contratação do artista.</p>
 				</div>
 			</div>
 		</div>
