@@ -66,7 +66,6 @@ if(isset($_POST['login']))
 			</p>
 		</div>
 		<p>&nbsp;</p>
-		<p>&nbsp;</p>
 
 		<section id="contact" class="home-section bg-white">
 			<div class="container">
@@ -75,39 +74,44 @@ if(isset($_POST['login']))
 						<h3>SSI - Sistema de Suporte Integrado</h3>
 						<h4>Módulo Infraestrutura</h4>
 
-						<p align="justify">&nbsp;</p>
-
 						<hr/>
 
 						<h5><?php if(isset($mensagem)){ echo $mensagem; } ?></h5>
 
 						<form method="POST" action="index.php" class="form-horizontal" role="form">
 							<div class="form-group">
-								<div class="col-md-offset-2 col-md-6">
-									<label>E-mail</label>
+								<div class="col-md-offset-4 col-md-4">
+									<label>Login</label>
 									<input type="text" name="login" class="form-control" placeholder="E-mail" maxlength="120">
 								</div>
-								<div class=" col-md-6">
+							</div>
+
+							<div class="form-group">
+								<div class="col-md-offset-4 col-md-4">
 									<label>Senha</label>
 									<input type="password" name="senha" class="form-control" placeholder="Senha" maxlength="60">
 								</div>
 							</div>
 
 							<div class="form-group">
-								<div class="col-md-offset-2 col-md-8">
-									<button type="submit" class="btn btn-theme btn-lg btn-block">Entrar</button>
+								<div class="col-md-offset-4 col-md-4">
+									<button class='btn btn-theme btn-md btn-block' type='submit' style="border-radius: 30px;">Entrar</button>
 								</div>
 							</div>
 						</form>
 						<br />
 
 						<div class="form-group">
-							<div class="col-md-offset-2 col-md-6">
-								<p>Não possui cadastro? <a href="verifica.php">Clique aqui.</a></p>
+							<div class="col-md-offset-0 col-md-4">
+								<p>Não possui cadastro? <br/><a href="verifica.php">Clique aqui.</a></p>
 								<br />
 							</div>
-							<div class="col-md-6">
-								<p>Esqueceu a senha? <a href="recuperar_senha.php">Clique aqui.</a></p>
+							<div class="col-md-4">
+								<p><a href="recuperar_senha.php">Acesso Administrativo</a></p>
+								<br />
+							</div>
+							<div class="col-md-4">
+								<p>Esqueceu a senha? <br/><a href="recuperar_senha.php">Clique aqui.</a></p>
 								<br />
 							</div>
 						</div>
@@ -120,7 +124,7 @@ if(isset($_POST['login']))
 				<div class="container">
 					<table width="100%">
 						<tr>
-							<td align="center"><font color="#ccc">2018 @ Desenvolvido por STI - Desenvolvimento e Programação</font></td>>
+							<td align="center"><font color="#ccc">2018 @ Desenvolvido por STI - Desenvolvimento e Programação</font></td>
 						</tr>
 					</table>
 				</div>
