@@ -6,7 +6,7 @@ session_start();
 
 <html>
 	<head>
-		<title>SMC / Pro-Mac - Programa Municipal de Apoio a Projetos Culturais</title>
+		<title>SSI - Infraestrutura</title>
 		<meta charset="utf-8" />
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 		<!-- css -->
@@ -19,6 +19,6 @@ session_start();
     </head>
 	<body>
 		<div id="bar">
-			<p id="p-bar"><img src="images/logo_cultura_h.png" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Pro-Mac</b>
+			<p id="p-bar"><img src="images/logo_cultura_h.png" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SSI - Infraestrutura
 			</p>
 		</div>
