@@ -48,7 +48,7 @@ $idUser= $_SESSION['idUser'];
 									echo "
 										<td class='list_description'>
 											<form method='POST' action='?perfil=usuario&p=detalhes'>
-												<input type='hidden' name='carregar' value='".$campo['id']."' />
+												<input type='hidden' name='idChamado' value='".$campo['id']."' />
 												<input type ='submit' class='btn btn-theme btn-block' value='carregar'>
 											</form>
 										</td>";
