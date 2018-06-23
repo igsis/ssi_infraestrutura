@@ -9,7 +9,7 @@ $pasta = "?perfil=usuario&p=";
 		<ul class="dl-menu">
 			<li><a href="?perfil=usuario">Home</a></li>
 			<li><a href="<?php echo $pasta ?>cadastra_chamado">Enviar chamado</a></li>
-			<li><a href="#">Lista de Chamados</a></li>
+			<li><a href="<?php echo $pasta ?>lista_chamado">Lista de Chamados</a></li>
 			<li style="color:white;">-------------------------</li>
 			<li><a href="index.php?secao=perfil">Minhas informações</a></li>
 			<li><a href="#">Manual do sistema</a></li>
