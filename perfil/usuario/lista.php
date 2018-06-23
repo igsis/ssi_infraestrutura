@@ -14,8 +14,7 @@ $idUser= $_SESSION['idUser'];
 					<table class='table table-condensed'>
 						<thead>
 							<tr class='list_menu'>
-								<td>Protocolo</td>
-								<td>Local</td>
+								<td>Chamado nº</td>
 								<td>Contato</td>
 								<td>Categoria</td>
 								<td>Descrição</td>
@@ -39,10 +38,9 @@ $idUser= $_SESSION['idUser'];
 									$status = recuperaDados("problem_status","id",$campo['problem_status_id']);
 									echo "<tr>";
 									echo "<td class='list_description'>".$campo['id']."</td>";
-									echo "<td class='list_description'>".$campo['local']."</td>";
 									echo "<td class='list_description'>".$campo['contact']."</td>";
 									echo "<td class='list_description'>".$category['category']."</td>";
-									echo "<td class='list_description'>".substr($campo['description'],0,15)."...</td>";
+									echo "<td class='list_description'>".substr($campo['description'],0,25)."...</td>";
 									echo "<td class='list_description'>".exibirDataHoraBr($campo['startDate'])."</td>";
 									echo "<td class='list_description'>".$status['status']."</td>";
 									echo "

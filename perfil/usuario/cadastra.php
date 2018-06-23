@@ -39,7 +39,7 @@ if(isset($_POST['cadastra']))
 		</div>
 		<div class="row">
 			<div class="col-md-offset-1 col-md-10">
-				<form class="form-horizontal" role="form" action="?perfil=usuario&p=cadastra_chamado" method="post">
+				<form class="form-horizontal" role="form" action="?perfil=usuario&p=cadastra" method="post">
 
 					<div class="form-group">
 						<div class="col-md-offset-1 col-md-3"><strong>Telefone:</strong><br/>
