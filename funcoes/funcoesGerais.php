@@ -287,15 +287,6 @@ function geraCombobox($tabela,$campo,$order,$select)
 	}
 }
 
-function recuperaModulo($pag)
-{
-	$sql = "SELECT * FROM modulo WHERE pagina = '$pag'";
-	$con = bancoMysqli();
-	$query = mysqli_query($con,$sql);
-	$modulo = mysqli_fetch_array($query);
-	return $modulo;
-}
-
 function recuperaDados($tabela,$campo,$variavelCampo)
 {
 	//retorna uma array com os dados de qualquer tabela. serve apenas para 1 registro.
@@ -304,51 +295,6 @@ function recuperaDados($tabela,$campo,$variavelCampo)
 	$query = mysqli_query($con,$sql);
 	$campo = mysqli_fetch_array($query);
 	return $campo;
-}
-
-function recuperaDadosProjeto($tabela,$campo,$variavelCampo)
-{
-	//retorna uma array com os dados de qualquer tabela. serve apenas para 1 registro.
-	$con = bancoMysqli();
-	$sql = "SELECT * FROM $tabela WHERE ".$campo." = '$variavelCampo' ORDER BY 'idProjeto' DESC LIMIT 0,1";
-	$query = mysqli_query($con,$sql);
-	$campo = mysqli_fetch_array($query);
-	return $campo;
-}
-
-function verificaExiste($idTabela,$idCampo,$idDado,$st)
-{
-	//retorna uma array com indice 'numero' de registros e 'dados' da tabela
-	$con = bancoMysqli();
-	if($st == 1)
-	{
-		// se for 1, é uma string
-		$sql = "SELECT * FROM $idTabela WHERE $idCampo = '%$idDado%'";
-	}
-	else
-	{
-		$sql = "SELECT * FROM $idTabela WHERE $idCampo = '$idDado'";
-	}
-	$query = mysqli_query($con,$sql);
-	$numero = mysqli_num_rows($query);
-	$dados = mysqli_fetch_array($query);
-	$campo['numero'] = $numero;
-	$campo['dados'] = $dados;
-	return $campo;
-}
-
-function recuperaIdDado($tabela,$id)
-{
-	$con = bancoMysqli();
-	//recupera os nomes dos campos
-	$sql = "SELECT * FROM $tabela";
-	$query = mysqli_query($con,$sql);
-	$campo01 = mysqli_field_name($query, 0);
-	$campo02 = mysqli_field_name($query, 1);
-	$sql = "SELECT * FROM $tabela WHERE $campo01 = $id";
-	$query = mysql_query($sql);
-	$campo = mysql_fetch_array($query);
-	return $campo[$campo02];
 }
 
 function checar($id)
@@ -460,11 +406,6 @@ function diaSemanaBase($data)
 		break;
 	}
 	return "$diasemana";
-}
-
-function soNumero($str)
-{
-	return preg_replace("/[^0-9]/", "", $str);
 }
 
 // Função que valida e-mails
