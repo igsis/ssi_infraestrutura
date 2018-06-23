@@ -5,6 +5,7 @@ function habilitarErro()
 	error_reporting(E_ALL);
 }
 
+date_default_timezone_set('America/Sao_Paulo');
 
 function autenticaloginusuario($login, $senha)
 {
@@ -19,9 +20,11 @@ function autenticaloginusuario($login, $senha)
 		{
 			// verifica se retorna usuário válido
 			$user = mysqli_fetch_array($query);
-			if($user['password'] == md5($_POST['senha']))
+			if($user['password'] == md5($_POST['senha']))// compara as senhas
 			{
-				// compara as senhas
+				$data = date('Y-m-d H:i:s');
+				$sql_date = "UPDATE `users` SET `dateLastAccess` = '$data' WHERE `users`.`login` = '$login'";
+				$query_date = mysqli_query($con,$sql_date);
 				session_start();
 				$_SESSION['login'] = $user['login'];
 				$_SESSION['nome'] = $user['local'];
