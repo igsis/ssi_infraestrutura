@@ -7,7 +7,7 @@ $pasta = "?perfil=administrador&p=";
 	<div id="dl-menu" class="dl-menuwrapper">
 		<button class="dl-trigger">Open Menu</button>
 		<ul class="dl-menu">
-			<li><a href="?perfil=usuario">Home</a></li>
+			<li><a href="?perfil=administrador">Home</a></li>
 			<li><a href="<?php echo $pasta ?>cadastra">Enviar chamado</a></li>
 			<li><a href="<?php echo $pasta ?>lista">Lista de Chamados</a></li>
 			<li><a href="<?php echo $pasta ?>busca">Busca</a></li>
