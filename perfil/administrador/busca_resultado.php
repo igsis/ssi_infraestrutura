@@ -139,7 +139,7 @@ else
 								echo "<td class='list_description'>".$x[$h]['startDate']."</td>";
 								echo "<td class='list_description'>".$x[$h]['status']."</td>";
 								echo "<td class='list_description'>
-										<form method='POST' action='?perfil=usuario&p=detalhes'>
+										<form method='POST' action='?perfil=administrador&p=detalhes'>
 											<input type='hidden' name='idChamado' value='".$x[$h]['id']."' />
 											<input type ='submit' class='btn btn-theme btn-block' value='carregar'>
 										</form>
