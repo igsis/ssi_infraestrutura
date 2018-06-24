@@ -1,10 +1,75 @@
 <?php
 $con = bancoMysqli();
 
-$idChamado = $_POST['idChamado'];
+if(isset($_POST['cadastra']))
+{
+	$idAdm = $_SESSION['idAdm'];
+	$idUser = $_POST['idUser'];
+	$local = $_POST['local'];
+	$phone = $_POST['phone'];
+	$email = $_POST['email'];
+	$contact = $_POST['contact'];
+	$categories_id = $_POST['categories_id'];
+	$priorities_id = $_POST['priorities_id'];
+	$problem_status_id = $_POST['problem_status_id'];
+	$description = $_POST['description'];
+	$solution = $_POST['solution'];
+	$startDate = date("Y-m-d H:i:s");
+
+	if($problem_status_id == 2)
+	{
+		$closedate = date("Y-m-d H:i:s");
+	}
+	else
+	{
+		$closedate = NULL;
+	}
+
+	$sql = "INSERT INTO `problems`(
+	`users_id`,
+	`local`,
+	`phone`,
+	`email`,
+	`contact`,
+	`priorities_id`,
+	`categories_id`,
+	`description`,
+	`solution`,
+	`startDate`,
+	`closedate`,
+	`problem_status_id`,
+	`administrators_id`) VALUES (
+	'$idUser',
+	'$local',
+	'$phone',
+	'$email',
+	'$contact',
+	'$priorities_id',
+	'$categories_id',
+	'$description',
+	'$solution',
+	'$startDate',
+	'$closedate',
+	'$problem_status_id',
+	'$idAdm')";
+	if(mysqli_query($con,$sql))
+	{
+		$mensagem = "<font color='#01DF3A'><strong>Cadastrado com sucesso!</strong><br/></font>";
+		$idAdm = $_SESSION['idAdm'];
+		$sql_ultimo = "SELECT * FROM problems WHERE administrators_id = '$idAdm' ORDER BY id DESC LIMIT 0,1";
+		$query_ultimo = mysqli_query($con,$sql_ultimo);
+		$problems = mysqli_fetch_array($query_ultimo);
+		$idChamado = $problems['id'];
+	}
+	else
+	{
+		$mensagem = "<font color='#FF0000'><strong>Erro ao cadastrar! Tente novamente.</strong></font>";
+	}
+}
 
 if(isset($_POST['gravar']))
 {
+	$idChamado = $_POST['idChamado'];
 	$administrators_id = $_POST['administrators_id'];
 	$priorities_id = $_POST['priorities_id'];
 	$problem_status_id = $_POST['problem_status_id'];

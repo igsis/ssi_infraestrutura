@@ -18,65 +18,6 @@ if(isset($_POST['carregar']))
 	$userContact = $user['contact'];
 }
 
-if(isset($_POST['cadastra']))
-{
-	$idUser = $_POST['idUser'];
-	$local = $_POST['local'];
-	$phone = $_POST['phone'];
-	$email = $_POST['email'];
-	$contact = $_POST['contact'];
-	$categories_id = $_POST['categories_id'];
-	$priorities_id = $_POST['priorities_id'];
-	$problem_status_id = $_POST['problem_status_id'];
-	$description = $_POST['description'];
-	$solution = $_POST['solution'];
-	$startDate = date("Y-m-d H:i:s");
-
-	if($problem_status_id == 2)
-	{
-		$closedate = date("Y-m-d H:i:s");
-	}
-	else
-	{
-		$closedate = NULL;
-	}
-
-	$sql = "INSERT INTO `problems`(
-	`users_id`,
-	`local`,
-	`phone`,
-	`email`,
-	`contact`,
-	`priorities_id`,
-	`categories_id`,
-	`description`,
-	`solution`,
-	`startDate`,
-	`closedate`,
-	`problem_status_id`,
-	`administrators_id`) VALUES (
-	'$idUser',
-	'$local',
-	'$phone',
-	'$email',
-	'$contact',
-	'$priorities_id',
-	'$categories_id',
-	'$description',
-	'$solution',
-	'$startDate',
-	'$closedate',
-	'$problem_status_id',
-	'$idAdm')";
-	if(mysqli_query($con,$sql))
-	{
-		$mensagem = "<font color='#01DF3A'><strong>Cadastrado com sucesso!</strong></font>";
-	}
-	else
-	{
-		$mensagem = "<font color='#FF0000'><strong>Erro ao cadastrar! Tente novamente.</strong></font>".$sql;
-	}
-}
 ?>
 <section id="list_items" class="home-section bg-white">
 	<div class="container"><?php include 'includes/menu.php'; ?>
@@ -101,7 +42,7 @@ if(isset($_POST['cadastra']))
 					</div>
 				</form>
 
-				<form class="form-horizontal" role="form" action="?perfil=administrador&p=cadastra" method="post">
+				<form class="form-horizontal" role="form" action="?perfil=administrador&p=detalhes" method="post">
 
 					<div class="form-group">
 						<div class="col-md-offset-1 col-md-3"><strong>Telefone:</strong><br/>
@@ -123,19 +64,19 @@ if(isset($_POST['cadastra']))
 						<div class="col-md-offset-1 col-md-4"><strong>Categoria:</strong>
 							<button class='btn btn-default' type='button' data-toggle='modal' data-target='#categoriaModal' style="border-radius: 30px;"><i class="fa fa-info-circle" aria-hidden="true"></i></button><br/>
 							<select class="form-control" name="categories_id">
-							<option>Selecione...</option>
+								<option>Selecione...</option>
 								<?php geraOpcao("categories","");	?>
 						</select>
 						</div>
 						<div class="col-md-3"><strong>Prioridade:</strong><br/>
 							<select class="form-control" name="priorities_id">
-							<option>Selecione...</option>
+								<option>Selecione...</option>
 								<?php geraOpcao("priorities","");	?>
 						</select>
 						</div>
 						<div class="col-md-3"><strong>Status:</strong><br/>
 							<select class="form-control" name="problem_status_id">
-							<option>Selecione...</option>
+								<option>Selecione...</option>
 								<?php geraOpcao("problem_status","");	?>
 						</select>
 						</div>
