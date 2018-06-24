@@ -12,7 +12,7 @@ $pasta = "?perfil=usuario&p=";
 			<li><a href="<?php echo $pasta ?>lista">Lista de Chamados</a></li>
 			<li><a href="<?php echo $pasta ?>busca">Busca</a></li>
 			<li style="color:white;">-------------------------</li>
-			<li><a href="<?php echo $pasta ?>minhas_informacoes">">Minhas informações</a></li>
+			<li><a href="<?php echo $pasta ?>minhas_informacoes">Minhas informações</a></li>
 			<li><a href="#">Manual do sistema</a></li>
 			<li><a href="../index.php">Sair</a></li>
 		</ul>
