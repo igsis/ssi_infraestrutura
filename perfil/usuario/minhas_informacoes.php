@@ -133,9 +133,15 @@ $operatingHours = $user['operatingHours'];
 						</div>
 						<div class="col-md-5"><strong>Prédio Tombado?</strong>
 							<select class="form-control" name="historicalBuilding">
-								<option value = "0">Não</option>
-								<option value = "1">Sim</option>
-						</select>
+								<?php
+									$tipos = ['Não', 'Sim'];
+									foreach($tipos as $chave => $tipo):
+										$selected = $_POST['historicalBuilding'] == $chave ?
+										"selected='selected'" : "";
+								?>
+									<option value="<?=$chave?>" <?=$selected?>>	<?=$tipo?> </option>
+								<?php endforeach ?>
+							</select>
 						</div>
 					</div>
 
