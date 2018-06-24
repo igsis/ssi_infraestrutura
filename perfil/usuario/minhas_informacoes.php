@@ -1,4 +1,5 @@
 <?php
+$con = bancoMysqli();
 
 if(isset($_POST['senha01']))
 {
@@ -71,7 +72,7 @@ if(isset($_POST['gravar']))
 	}
 	else
 	{
-		$mensagem = "<font color='#FF0000'><strong>Erro ao atualizar! Tente novamente.</strong></font>";
+		$mensagem = "<font color='#FF0000'><strong>Erro ao atualizar! Tente novamente.</strong></font>".$sql;
 	}
 }
 
@@ -127,7 +128,7 @@ $operatingHours = $user['operatingHours'];
 						<div class="col-md-offset-1 col-md-5"><strong>Região:</strong>
 							<select class="form-control" name="idRegion">
 							<option>Selecione...</option>
-								<?php geraOpcao("regions","idRegion");	?>
+								<?php geraOpcao("regions",$idRegion); ?>
 						</select>
 						</div>
 						<div class="col-md-5"><strong>Prédio Tombado?</strong>
