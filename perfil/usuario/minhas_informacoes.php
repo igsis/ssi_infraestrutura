@@ -1,5 +1,7 @@
 <?php
 $con = bancoMysqli();
+$usuario = $_SESSION['idUser'];
+
 
 if(isset($_POST['senha01']))
 {
@@ -10,7 +12,7 @@ if(isset($_POST['senha01']))
 		{
 			// verifica se a nova senha foi digitada corretamente duas vezes
 			$senha = recuperaDados("users","login",$_SESSION['login']);
-			if(md5($_POST['senha03']) == $senha['senha'])
+			if(md5($_POST['senha03']) == $senha['password'])
 			{
 				$usuario = $_SESSION['idUser'];
 				$senha01 = md5($_POST['senha01']);
@@ -165,7 +167,7 @@ $operatingHours = $user['operatingHours'];
 					<h3>Trocar Senha</h3>
 				</div>
 
-				<form method="POST" action="?perfil=senha"class="form-horizontal" role="form">
+				<form method="POST" action="?perfil=usuario&p=minhas_informacoes"class="form-horizontal" role="form">
 					<div class="form-group">
 						<div class="col-md-offset-1 col-md-4"><label>Insira sua senha antiga</label>
 							<input type="password" name="senha03" class="form-control" id="inputName" placeholder="">
