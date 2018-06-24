@@ -12,7 +12,7 @@ if(isset($_POST['login_user']))
 
 if(isset($_POST['login_adm']))
 {
-	$login = $_POST['login'];
+	$login = $_POST['login_adm'];
 	$senha = $_POST['senha'];
 	autenticaloginadministrador($login,$senha);
 }
@@ -55,7 +55,7 @@ if(isset($_POST['login_adm']))
 							<div class="form-group">
 								<div class="col-md-offset-4 col-md-4">
 									<label>Login</label>
-									<input type="text" name="login_user" class="form-control" placeholder="E-mail" maxlength="120">
+									<input type="text" name="login_user" class="form-control" maxlength="120">
 								</div>
 							</div>
 
@@ -104,7 +104,7 @@ if(isset($_POST['login_adm']))
 							<form class="form-horizontal" role="form" action="index.php" method="post">
 								<div class="modal-body">
 									<label>Login</label>
-									<input type="text" name="login_adm" class="form-control" placeholder="E-mail" maxlength="20">
+									<input type="text" name="login_adm" class="form-control" maxlength="20">
 									<label>Senha</label>
 									<input type="password" name="senha" class="form-control" placeholder="Senha" maxlength="60">
 								</div>
@@ -129,6 +129,17 @@ if(isset($_POST['login_adm']))
 					</table>
 				</div>
 			<script src="visual/js/bootstrap.min.js"></script>
+			<div class="container">
+				<div class="col-md-12">
+				<?php
+					echo "<strong>SESSION</strong><pre>", var_dump($_SESSION), "</pre>";
+					echo "<strong>POST</strong><pre>", var_dump($_POST), "</pre>";
+					echo "<strong>GET</strong><pre>", var_dump($_GET), "</pre>";
+					echo "<strong>FILES</strong><pre>", var_dump($_FILES), "</pre>";
+					echo ini_get('session.gc_maxlifetime')/60; // em minutos
+				?>
+				</div>
+			</div>
 			</footer>
 		</section>
 	</body>
