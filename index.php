@@ -14,7 +14,7 @@ if(isset($_POST['login_adm']))
 {
 	$login = $_POST['login'];
 	$senha = $_POST['senha'];
-	autenticaloginusuario($login,$senha);
+	autenticaloginadministrador($login,$senha);
 }
 
 ?>
@@ -25,8 +25,12 @@ if(isset($_POST['login_adm']))
 		<link href="visual/css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<link href="visual/css/style.css" rel="stylesheet" media="screen">
 		<link href="visual/color/default.css" rel="stylesheet" media="screen">
-		<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" href="visual/css/font-awesome.min.css">
+		<link rel="icon" type="image/png" sizes="16x16" href="visual/images/favicon.png">
 		<script src="visual/js/modernizr.custom.js"></script>
+		<script src="visual/js/jquery-1.9.1.js"></script>
+		<script src="visual/js/jquery-ui.js"></script>
 	</head>
 	<body>
 		<div id="bar">
@@ -44,7 +48,8 @@ if(isset($_POST['login_adm']))
 
 						<hr/>
 
-						<h5><?php if(isset($_POST['login'])){ echo autenticaloginusuario($login, $senha); } ?></h5>
+						<h5><?php if(isset($_POST['login_user'])){ echo autenticaloginusuario($login, $senha); } ?></h5>
+						<h5><?php if(isset($_POST['login_adm'])){ echo autenticaloginadministrador($login, $senha); } ?></h5>
 
 						<form method="POST" action="index.php" class="form-horizontal" role="form">
 							<div class="form-group">
@@ -67,7 +72,10 @@ if(isset($_POST['login_adm']))
 								</div>
 							</div>
 						</form>
-						<br />
+
+						<div class="form-group">
+							<hr/>
+						</div>
 
 						<div class="form-group">
 							<div class="col-md-offset-0 col-md-4">
@@ -75,7 +83,7 @@ if(isset($_POST['login_adm']))
 								<br />
 							</div>
 							<div class="col-md-4">
-								<p><a href="recuperar_senha.php">Acesso Administrativo</a></p>
+								<button class='btn btn-default' type='button' data-toggle='modal' data-target='#acessoAdm' style="border-radius: 30px;">Acesso Administrativo</button>
 								<br />
 							</div>
 							<div class="col-md-4">
@@ -85,6 +93,30 @@ if(isset($_POST['login_adm']))
 						</div>
 					</div>
 				</div>
+				<!-- Início Acesso Adm -->
+				<div class="modal fade" id="acessoAdm" role="dialog" aria-labelledby="acessoAdmLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h4 class="modal-title">Acesso Administrativo</h4>
+							</div>
+							<form class="form-horizontal" role="form" action="index.php" method="post">
+								<div class="modal-body">
+									<label>Login</label>
+									<input type="text" name="login_adm" class="form-control" placeholder="E-mail" maxlength="20">
+									<label>Senha</label>
+									<input type="password" name="senha" class="form-control" placeholder="Senha" maxlength="60">
+								</div>
+
+								<div class="modal-footer">
+									<button type="submit" class="btn btn-success btn-block" style="border-radius: 30px; id="confirm">Entrar</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- Fim Acesso Adm -->
 			</div>
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
@@ -96,7 +128,8 @@ if(isset($_POST['login_adm']))
 						</tr>
 					</table>
 				</div>
+			<script src="visual/js/bootstrap.min.js"></script>
 			</footer>
 		</section>
-    </body>
+	</body>
 </html>
