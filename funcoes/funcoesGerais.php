@@ -60,15 +60,15 @@ function autenticaloginadministrador($login, $senha)
 		if(mysqli_num_rows($query) > 0)
 		{
 			// verifica se retorna usuário válido
-			$user = mysqli_fetch_array($query);
-			if($user['password'] == md5($_POST['senha']))
+			$admin = mysqli_fetch_array($query);
+			if($admin['password'] == md5($_POST['senha']))
 			{
 				// compara as senhas
 				session_start();
-				$_SESSION['login'] = $user['login'];
-				$_SESSION['nome'] = $user['local'];
-				$_SESSION['idUser'] = $user['id'];
-				header("Location: visual/index_usuario.php");
+				$_SESSION['login'] = $admin['login'];
+				$_SESSION['nome'] = $admin['local'];
+				$_SESSION['idAdm'] = $admin['id'];
+				header("Location: visual/index_administrador.php");
 			}
 			else
 			{
