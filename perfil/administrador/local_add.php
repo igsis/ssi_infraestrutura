@@ -57,7 +57,7 @@
 
 					<div class="form-group">
 						<div class="col-md-offset-1 col-md-10">
-							<input type="submit" name="adcionar" value="GRAVAR" class="btn btn-theme btn-md btn-block">
+							<input type="submit" name="adicionar" value="GRAVAR" class="btn btn-theme btn-md btn-block">
 						</div>
 					</div>
 				</form>
