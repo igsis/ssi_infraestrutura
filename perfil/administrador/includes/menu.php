@@ -14,7 +14,7 @@ $pasta = "?perfil=administrador&p=";
 			<li><a href="#">Acesso Administrativo</a>
 				<ul class="dl-submenu">
 					<li><a href="<?php echo $pasta ?>categoria">Categoria</a></li>
-					<li><a href="<?php echo $pasta ?>funcionario">Funcionarios</a></li>
+					<li><a href="<?php echo $pasta ?>funcionario">Funcionários</a></li>
 					<li><a href="<?php echo $pasta ?>local">Local</a></li>
 				</ul>
 			</li>
