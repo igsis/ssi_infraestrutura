@@ -110,7 +110,7 @@ $operatingHours = $user['operatingHours'];
 
 					<div class="form-group">
 						<div class="col-md-offset-1 col-md-3"><strong>Telefone:</strong><br/>
-							<input type="text" class="form-control" name="phone" maxlength="15" value="<?php echo $userPhone ?>">
+							<input type="text" class="form-control" name="phone" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" value="<?php echo $userPhone ?>">
 						</div>
 						<div class="col-md-4"><strong>E-mail:</strong><br/>
 							<input type="text" class="form-control" name="email" maxlength="100" value="<?php echo $userEmail ?>">
