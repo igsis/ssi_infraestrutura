@@ -39,4 +39,24 @@ function recuperaInfoAdministrador($idAdm)
 	);
 	return $campo;
 }
+
+function geraOrder4($tabela,$select)
+{
+	//gera os options de um select
+	$sql = "SELECT * FROM $tabela ORDER BY 4";
+
+	$con = bancoMysqli();
+	$query = mysqli_query($con,$sql);
+	while($option = mysqli_fetch_row($query))
+	{
+		if($option[0] == $select)
+		{
+			echo "<option value='".$option[0]."' selected >".$option[3]."</option>";
+		}
+		else
+		{
+			echo "<option value='".$option[0]."'>".$option[3]."</option>";
+		}
+	}
+}
 ?>
