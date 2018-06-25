@@ -19,3 +19,24 @@ function listaUser($idAdm,$select)
 	}
 }
 ?>
+
+<?php
+function recuperaInfoAdministrador($idAdm)
+{
+	//retorna uma array com indice 'numero' de registros e 'dados' da tabela
+	$con = bancoMysqli();
+	$sql = "SELECT * FROM administrators WHERE id = '$idAdm'";
+	$query = mysqli_query($con,$sql);
+	$lista = mysqli_fetch_array($query);
+
+	$campo = array(
+		"idAdm" => $lista['id'],
+		"login" => $lista['login'],
+		"local" => $lista['local'],
+		"phone" => $lista['phone'],
+		"email" => $lista['email'],
+		"dateCreated" => $lista['dateCreated']
+	);
+	return $campo;
+}
+?>
