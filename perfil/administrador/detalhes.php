@@ -211,7 +211,7 @@ $tool = recuperaDados("employees_problems","problems_id",$idChamado);
 						<div class="form-group">
 							<div class="col-md-offset-2 col-md-8"><strong>Categoria:</strong>
 								<select class="form-control" name="categories_id">
-									<?php geraOpcao("categories",$chamado['categories_id']); ?>
+									<?php geraOpcaoPublicado("categories",$chamado['categories_id']); ?>
 								</select>
 							</div>
 						</div>

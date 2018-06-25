@@ -62,7 +62,7 @@ if(isset($_POST['cadastra']))
 							<button class='btn btn-default' type='button' data-toggle='modal' data-target='#categoriaModal' style="border-radius: 30px;"><i class="fa fa-info-circle" aria-hidden="true"></i></button><br/>
 							<select class="form-control" name="categories_id">
 							<option>Selecione...</option>
-								<?php geraOpcao("categories","");	?>
+								<?php geraOpcaoPublicado("categories","");	?>
 						</select>
 						</div>
 					</div>

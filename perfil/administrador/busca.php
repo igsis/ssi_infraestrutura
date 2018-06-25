@@ -29,7 +29,7 @@ $idAdm = $_SESSION['idAdm'];
 						<div class="col-md-offset-2 col-md-8"><label>Categoria</label>
 							<select class="form-control" name="categories_id" >
 								<option>Selecione...</option>
-								<?php echo geraOpcao("categories","") ?>
+								<?php echo geraOpcaoPublicado("categories","") ?>
 							</select>
 						</div>
 					</div>
