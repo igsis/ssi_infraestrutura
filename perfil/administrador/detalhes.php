@@ -1,6 +1,11 @@
 <?php
 $con = bancoMysqli();
 
+if(isset($_POST['idChamado']))
+{
+	$idChamado = $_POST['idChamado'];
+}
+
 if(isset($_POST['cadastra']))
 {
 	$idAdm = $_SESSION['idAdm'];
