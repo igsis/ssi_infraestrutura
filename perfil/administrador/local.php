@@ -1,6 +1,7 @@
 <?php
 $con = bancoMysqli();
-if(isset($_POST['login']))
+
+if(isset($_POST['adicionar']))
 {
 	$login = $_POST['login'];
 	$password= md5('ssi2018');
@@ -25,7 +26,8 @@ if(isset($_POST['login']))
 		$sql_adm_user = "INSERT INTO administrators_users (users_id, admininstrators_id) VALUES ('$users_id', '$idAdm')";
 		if(mysqli_query($con,$sql_adm_user))
 		{
-			$mensagem = "<font color='#01DF3A'><strong>Cadastrado com sucesso!</strong></font>";
+			$mensagem = "<font color='#01DF3A'><strong>Cadastrado com sucesso!<br/>
+							Senha padrão <i>ssi2018</i></strong> </font>";
 		}
 		else
 		{
@@ -35,6 +37,40 @@ if(isset($_POST['login']))
 	else
 	{
 		$mensagem = "<font color='#FF0000'><strong>Erro ao cadastrar! Tente novamente.</strong></font>";
+	}
+}
+
+if(isset($_POST['editar']))
+{
+	$id = $_POST['id'];
+	$login = $_POST['login'];
+	$local = $_POST['local'];
+	$phone = $_POST['phone'];
+	$email = $_POST['email'];
+	$contact = $_POST['contact'];
+	$address = $_POST['address'];
+	$idRegion = $_POST['idRegion'];
+	$historicalBuilding = $_POST['historicalBuilding'];
+	$operatingHours = $_POST['operatingHours'];
+
+	$sql_edita = "UPDATE users SET
+		login = '$login',
+		local = '$local',
+		phone = '$phone',
+		email = '$email',
+		contact = '$contact',
+		address  = '$address',
+		idRegion = '$idRegion',
+		operatingHours = '$operatingHours',
+		historicalBuilding = '$historicalBuilding'
+		WHERE id = '$id'";
+	if(mysqli_query($con,$sql_edita))
+	{
+		$mensagem = "<font color='#01DF3A'><strong>Atualizado com sucesso!</strong></font>";
+	}
+	else
+	{
+		$mensagem = "<font color='#FF0000'><strong>Erro ao atualizar! Tente novamente.</strong></font>";
 	}
 }
 ?>
@@ -48,7 +84,9 @@ if(isset($_POST['login']))
 			<div class="col-md-offset-1 col-md-10">
 				<div class="form-group">
 					<div class="col-md-offset-2 col-md-8">
-						<button class='btn btn-success' type='button' data-toggle='modal' data-target='#addLocal' style="border-radius: 30px;"> Adicionar Local / Usuário</button>
+						<form class="form-horizontal" role="form" action="?perfil=administrador&p=local_add" method="post">
+							<input type="submit" value="Adicionar Local / Usuário" class="btn btn-success" style="border-radius: 30px;">
+						</form>
 					</div>
 				</div>
 				<div class="form-group">
@@ -90,9 +128,9 @@ if(isset($_POST['login']))
 											echo "<td class='list_description'>".$reg['region']."</td>";
 											echo "
 												<td class='list_description'>
-													<form method='POST' action='?perfil=administrador&p=local'>
+													<form method='POST' action='?perfil=administrador&p=local_edit'>
 														<input type='hidden' name='carregar' value='".$campo['id']."' />
-														<input type ='submit' class='btn btn-theme btn-block' value='carregar'>
+														<input type='submit' value='Carregar' class='btn btn-success btn-block' style='border-radius: 5px;'>
 													</form>
 												</td>";
 											echo "</tr>";
@@ -112,58 +150,5 @@ if(isset($_POST['login']))
 				</div>
 			</div>
 		</div>
-		<!--------------- Início Modal Adiona Local --------------->
-		<div class="modal fade" id="addLocal" role="dialog" aria-labelledby="addLocalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title">Adiciona Local</h4>
-					</div>
-					<form class="form-horizontal" role="form" action="?perfil=administrador&p=local" method="post">
-						<div class="modal-body">
-							<label>Login</label>
-							<input type="text" name="login" class="form-control" maxlength="10">
-
-							<label>Local</label>
-							<input type="text" name="local" class="form-control" maxlength="100">
-
-							<label>Telefone</label>
-							<input type="text" name="phone" class="form-control" maxlength="20">
-
-							<label>Email</label>
-							<input type="text" name="email" class="form-control" maxlength="100">
-
-							<label>Contato</label>
-							<input type="text" name="contact" class="form-control" maxlength="20">
-
-							<label>Endereço</label>
-							<input type="text" name="address" class="form-control" maxlength="255">
-
-							<label>Região</label>
-							<select class="form-control" name="idRegion">
-								<option>Selecione...</option>
-								<?php geraOpcao("regions",$idRegion); ?>
-							</select>
-
-							<label>Horário de Funcionamento</label>
-							<input type="text" name="operatingHours" class="form-control" maxlength="100">
-
-							<label>Prédio Tombado</label>
-							<select class="form-control" name="historicalBuilding">
-								<option value="0">Não</option>
-								<option value="1">Sim</option>
-							</select>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-							<button type="submit" name="adicionaLocal" class="btn btn-success" id="confirm">Adicionar</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<!--------------- Fim Modal Adiona Local --------------->
-
 	</div>
 </section>
