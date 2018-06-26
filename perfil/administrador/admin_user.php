@@ -20,7 +20,7 @@ if(isset($_POST['users_id']))
 <section id="list_items" class="home-section bg-white">
 	<div class="container"><?php include 'includes/menu.php'; ?>
 		<div class="form-group">
-			<h3>Administrador / Usuário</h3>
+			<h3>Administrador de Cada Local</h3>
 			<h5><?php if(isset($mensagem)){echo $mensagem;};?></h5>
 		</div>
 		<div class="row">
@@ -29,7 +29,7 @@ if(isset($_POST['users_id']))
 					<table class='table table-condensed'>
 						<thead>
 							<tr class='list_menu'>
-								<td><strong>Usuário / Local</strong></td>
+								<td><strong>Local / Usuário</strong></td>
 								<td><strong>Administrador</strong></td>
 								<td width='15%'></td>
 							</tr>
