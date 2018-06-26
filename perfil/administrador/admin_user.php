@@ -1,3 +1,22 @@
+<?php
+$con = bancoMysqli();
+
+if(isset($_POST['users_id']))
+{
+	$users_id = $_POST['users_id'];
+	$admininstrators_id = $_POST['admininstrators_id'];
+
+	$sql = "UPDATE administrators_users SET users_id = '$users_id',  admininstrators_id = '$admininstrators_id' WHERE users_id = '$users_id'";
+	if(mysqli_query($con,$sql))
+	{
+		$mensagem = "<font color='#01DF3A'><strong>Atualizado com sucesso!</strong></font>";
+	}
+	else
+	{
+		$mensagem = "<font color='#FF0000'><strong>Erro ao atualizar! Tente novamente.</strong></font>";
+	}
+}
+?>
 <section id="list_items" class="home-section bg-white">
 	<div class="container"><?php include 'includes/menu.php'; ?>
 		<div class="form-group">
@@ -31,11 +50,11 @@
 									echo "<tr>";
 									echo "<form method='POST' action='?perfil=administrador&p=admin_user'>";
 									echo "<td class='list_description'>
-											<select class='form-control' name='idEtapa'>";
+											<select class='form-control' name='users_id'>";
 											echo geraOrder4('users',$campo['users_id'])
 										."</select></td>";
 									echo "<td class='list_description'>
-											<select class='form-control' name='idEtapa'>";
+											<select class='form-control' name='admininstrators_id'>";
 											echo geraOrder4('administrators',$campo['admininstrators_id'])
 										."</select></td>";
 									echo "
