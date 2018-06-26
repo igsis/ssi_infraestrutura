@@ -67,7 +67,6 @@ function Tabela($header, $data)
 $idAdm = $_SESSION['idAdm'];
 $idChamado = $_POST['idChamado'];
 
-
 $chamado = recuperaDados("problems","id",$idChamado);
 $category = recuperaDados("categories","id",$chamado['categories_id']);
 $administrator = recuperaDados("administrators","id",$chamado['administrators_id']);
@@ -79,7 +78,7 @@ $funcionario = recuperaDados("employees","id",$tool['employee_id']);
 
 //chamado
 $numero = $chamado["id"];
-$dataCriacao = $chamado['startDate'];
+$dataCriacao = exibirDataHoraBr($chamado['startDate']);
 $servico = $category['category'];
 $descricao = $chamado['description'];
 $ferramentas = $tool['toolMaterial'];
@@ -101,7 +100,6 @@ $pdf = new PDF('P','mm','A4'); //CRIA UM NOVO ARQUIVO PDF NO TAMANHO A4
 $pdf->AliasNbPages();
 $pdf->AddPage();
 
-   
 $x=10;
 $l=5; //DEFINE A ALTURA DA LINHA   
 
@@ -135,7 +133,7 @@ $l=5; //DEFINE A ALTURA DA LINHA
    
    $pdf->SetX($x);
    $pdf->SetFont('Arial','B', 10);
-   $pdf->Cell(28,$l,utf8_decode('Solicitação dos:'),0,0,'L');
+   $pdf->Cell(28,$l,utf8_decode('Solicitação do:'),0,0,'L');
    $pdf->SetFont('Arial','', 10);
    $pdf->Cell(50,$l,utf8_decode($local),0,0,'L');
    $pdf->SetFont('Arial','B', 10);
@@ -155,7 +153,7 @@ $l=5; //DEFINE A ALTURA DA LINHA
    $pdf->SetFont('Arial','B', 10);
    $pdf->Cell(22,$l,utf8_decode('Funcionário:'),0,0,'L');
    $pdf->SetFont('Arial','', 10);
-   $pdf->Cell(15,$l,utf8_decode("$atendente-$role"),0,1,'L');
+   $pdf->Cell(15,$l,utf8_decode("$atendente-$funcaoAtendente"),0,1,'L');
 
    $pdf->SetX($x);
    $pdf->SetFont('Arial','B', 10);
@@ -215,6 +213,8 @@ $l=5; //DEFINE A ALTURA DA LINHA
    $pdf->Cell(25,$l,utf8_decode('_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _'),0,0,'L');
 
    $pdf->SetXY( $x , 155 );// SetXY - DEFINE O X (largura) E O Y (altura) NA PÁGINA
+
+   $pdf->Image('../visual/images/logo_smc.jpg',170,152);
    
    $pdf->SetX($x);
    $pdf->SetFont('Arial','B', 10);
@@ -244,7 +244,7 @@ $l=5; //DEFINE A ALTURA DA LINHA
    
    $pdf->SetX($x);
    $pdf->SetFont('Arial','B', 10);
-   $pdf->Cell(28,$l,utf8_decode('Solicitação dos:'),0,0,'L');
+   $pdf->Cell(28,$l,utf8_decode('Solicitação do:'),0,0,'L');
    $pdf->SetFont('Arial','', 10);
    $pdf->Cell(50,$l,utf8_decode($local),0,0,'L');
    $pdf->SetFont('Arial','B', 10);
@@ -264,7 +264,7 @@ $l=5; //DEFINE A ALTURA DA LINHA
    $pdf->SetFont('Arial','B', 10);
    $pdf->Cell(22,$l,utf8_decode('Funcionário:'),0,0,'L');
    $pdf->SetFont('Arial','', 10);
-   $pdf->Cell(15,$l,utf8_decode("$atendente-$role"),0,1,'L');
+   $pdf->Cell(15,$l,utf8_decode("$atendente-$funcaoAtendente"),0,1,'L');
 
    $pdf->SetX($x);
    $pdf->SetFont('Arial','B', 10);
@@ -283,6 +283,8 @@ $l=5; //DEFINE A ALTURA DA LINHA
    $pdf->Ln();
    $pdf->Ln();
    $pdf->Ln();
+   $pdf->Ln();
+   $pdf->Ln();
 
 
    $pdf->SetX($x);
@@ -291,8 +293,6 @@ $l=5; //DEFINE A ALTURA DA LINHA
    $pdf->SetFont('Arial','', 10);
    $pdf->MultiCell(140,5,utf8_decode($descricao));
 
-   $pdf->Ln();
-   $pdf->Ln();
    $pdf->Ln();
    $pdf->Ln();
    $pdf->Ln();
