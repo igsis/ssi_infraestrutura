@@ -7,7 +7,8 @@ $query1 = mysqli_query($con,$aberto);
 
 $qtde1 = mysqli_num_rows($query1);
 
-$fechado = "SELECT id FROM problems WHERE administrators_id='$id1' AND problem_status_id ='2' AND MONTH(startDate)"; // Registro de chamados fechado
+$mes = date('m');
+$fechado = "SELECT id FROM problems WHERE administrators_id='$id1' AND problem_status_id ='2' AND MONTH(startDate) = '$mes'"; // Registro de chamados fechado
 $con = bancoMysqli();
 $query2 = mysqli_query($con,$fechado);
 
