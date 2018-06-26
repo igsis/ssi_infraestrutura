@@ -33,6 +33,14 @@ $qtde3 = mysqli_num_rows($query3);
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <div class="text-hide">
+                    <h5>Relatório de <?php echo retornaMes($mes); ?></h5>
+                </div>
+            </div>
+        </div>
+
         <div class="col-md-offset-2 col-md-8">
             <div class="card border border-secondary">
                 <table class="table table-borderless">
