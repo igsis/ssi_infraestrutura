@@ -1,4 +1,24 @@
 <?php
+$id1 = $_SESSION['idAdm'];
+
+$aberto = "SELECT id FROM problems WHERE administrators_id='$id1' AND problem_status_id ='1' AND MONTH(startDate) ='6' AND MONTH(closedate)='6'"; // Registro de chamados em abertos
+$con = bancoMysqli();
+$query1 = mysqli_query($con,$aberto);
+
+$qtde1 = mysqli_num_rows($query1);
+
+$fechado = "SELECT id FROM problems WHERE administrators_id='$id1' AND problem_status_id ='2' AND MONTH(startDate) AND MONTH(closedate)"; // Registro de chamados fechado
+$con = bancoMysqli();
+$query2 = mysqli_query($con,$fechado);
+
+$qtde2 = mysqli_num_rows($query2);
+
+$andamento = "SELECT id FROM problems WHERE administrators_id='$id1' AND problem_status_id ='3' AND MONTH(startDate) AND MONTH(closedate)"; // Registro de chamado em andamento
+$con = bancoMysqli();
+$query3 = mysqli_query($con,$andamento);
+
+$qtde3 = mysqli_num_rows($query3);
+
 ?>
 <section id="list_items" class="home-section bg-white">
     <div class="container"><?php include 'includes/menu.php';?>
@@ -13,27 +33,19 @@
 
         <?php
         $id1 = $_SESSION['idAdm'];
-        ?>
 
-        <?php
         $aberto = "SELECT id FROM problems WHERE administrators_id='$id1' AND problem_status_id ='1'"; // Registro de chamados em abertos
         $con = bancoMysqli();
         $query1 = mysqli_query($con,$aberto);
 
         $qtde1 = mysqli_num_rows($query1);
 
-        ?>
-
-        <?php
         $fechado = "SELECT id FROM problems WHERE administrators_id='$id1' AND problem_status_id ='2'"; // Registro de chamados fechado
         $con = bancoMysqli();
         $query2 = mysqli_query($con,$fechado);
 
         $qtde2 = mysqli_num_rows($query2);
 
-        ?>
-
-        <?php
         $andamento = "SELECT id FROM problems WHERE administrators_id='$id1' AND problem_status_id ='3'"; // Registro de chamado em andamento
         $con = bancoMysqli();
         $query3 = mysqli_query($con,$andamento);
