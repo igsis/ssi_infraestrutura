@@ -1,32 +1,7 @@
-<?php
-$con = bancoMysqli();
-
-if(isset($_POST['gravar']))
-{
-	$login = $_POST['login'];
-    $local = $_POST['local'];
-	$password = md5('ssi2018');
-	$phone = $_POST['phone'];
-	$email = $_POST['email'];
-	$dateCreated = date('Y:m:d H:i:s');
-
-	$sql = "INSERT INTO `administrators` (login, password, local, phone, email, dateCreated) 
-            VALUES ('$login', '$password', '$local', '$phone', '$email','$dateCreated')";
-	if(mysqli_query($con,$sql))
-	{
-		$mensagem = "<span style=\"color: #01DF3A; \"><strong>Atualizado com sucesso!</strong></span>";
-	}
-	else
-	{
-		$mensagem = "<span style=\"color: #FF0000; \"><strong>Erro ao atualizar! Tente novamente.</strong></span>";
-	}
-}
-
-?>
 <section id="list_items" class="home-section bg-white">
 	<div class="container"><?php include 'includes/menu.php'; ?>
 		<div class="form-group">
-			<h3>Minhas Informações</h3>
+			<h3>Cadastro de Administrador</h3>
 			<br/>
 			<h5><?php if(isset($mensagem)){echo $mensagem;};?></h5>
 		</div>
