@@ -79,7 +79,7 @@ if(isset($_POST['login_adm']))
 
 						<div class="form-group">
 							<div class="col-md-offset-0 col-md-4">
-								<p>Não possui cadastro? <br/><a href="verifica.php">Clique aqui.</a></p>
+								<p>&nbsp;</p>
 								<br />
 							</div>
 							<div class="col-md-4">
@@ -87,7 +87,7 @@ if(isset($_POST['login_adm']))
 								<br />
 							</div>
 							<div class="col-md-4">
-								<p>Esqueceu a senha? <br/><a href="recuperar_senha.php">Clique aqui.</a></p>
+								<p>&nbsp;</p>
 								<br />
 							</div>
 						</div>
