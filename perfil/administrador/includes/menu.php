@@ -16,6 +16,8 @@ $pasta = "?perfil=administrador&p=";
 					<li><a href="<?php echo $pasta ?>categoria">Categoria</a></li>
 					<li><a href="<?php echo $pasta ?>funcionario">Funcionários</a></li>
 					<li><a href="<?php echo $pasta ?>local">Local</a></li>
+					<li><a href="<?php echo $pasta ?>admin_user">Administrador do Usuário</a></li>
+					<li><a href="<?php echo $pasta ?>admin_user">Administrador</a></li>
 				</ul>
 			</li>
 			<li style="color:white;">-------------------------</li>
