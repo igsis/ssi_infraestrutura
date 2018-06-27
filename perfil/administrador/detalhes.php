@@ -153,9 +153,6 @@ $tool = recuperaDados("employees_problems","problems_id",$idChamado);
 ?>
 <section id="list_items" class="home-section bg-white">
 	<div class="container"><?php include 'includes/menu.php'; ?>
-		<div align="right" class="col-md-offset-2 col-md-7">
-			<a href="#"><i class="fa fa-print" aria-hidden="true"></i></a>
-		</div>
 		<div class="form-group">
 			<h3>Detalhes do Chamado Nº <?php echo $idChamado ?></h3>
 			<br/>
@@ -365,7 +362,7 @@ $tool = recuperaDados("employees_problems","problems_id",$idChamado);
 								<div class="modal-body">
 									<label>Funcionário</label>
 										<select class="form-control" name="employee_id">
-										<?php geraOpcao("employees",""); ?>
+										<?php geraOpcaoPublicado("employees",""); ?>
 									</select>
 									<label>Materiais / Ferramentas</label>
 									<textarea name="toolMaterial" class='form-control' cols="40" rows="6"></textarea>
