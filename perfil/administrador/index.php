@@ -65,7 +65,7 @@ $categoria2_Fechado = mysqli_query($con, $alvenaria_Fechado);
 
 $tot2_Fechado = mysqli_num_rows($categoria2_Fechado);
 
-$alvenaria_Andamento = "SELECT * FROM problems WHERE administrators_id='$id1' AND problem_status_id ='3' AND categories_id ='2' AND MONTH(startDate) = '$mes'";
+$alvenaria_Andamento = "SELECT id FROM problems WHERE administrators_id='$id1' AND problem_status_id ='3' AND categories_id ='2' AND MONTH(startDate) = '$mes'";
 $categoria2_Andamento = mysqli_query($con, $alvenaria_Andamento);
 
 $tot2_Andamento = mysqli_num_rows($categoria2_Andamento);
