@@ -52,6 +52,7 @@ $link01 = $http."rlt_ordemservico.php";
 										<td class='list_description'>
 											<form method='POST' action='$link01'>
 												<input type='hidden' name='idChamado' value='$idChamado' />
+												<input type='hidden' name='idFuncionario' value='".$funcionario['id']."' />
 												<input type ='submit' class='btn btn-theme btn-block' value='EMITIR OS'>
 											</form>
 										</td>";

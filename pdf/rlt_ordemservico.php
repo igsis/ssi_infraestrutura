@@ -66,10 +66,11 @@ function Tabela($header, $data)
 //CONSULTA
 $idAdm = $_SESSION['idAdm'];
 $idChamado = $_POST['idChamado'];
+$idFuncionario = $_POST['idFuncionario'];
 
 $chamado = recuperaDados("problems","id",$idChamado);
 $category = recuperaDados("categories","id",$chamado['categories_id']);
-$tool = recuperaDados("employees_problems","problems_id",$idChamado);
+$tool = recuperaDados("employees_problems","problems_id",$idFuncionario);
 $user = recuperaDados("users","id",$chamado['users_id']);
 $funcionario = recuperaDados("employees","id",$tool['employee_id']);
 
@@ -156,13 +157,13 @@ $l=5; //DEFINE A ALTURA DA LINHA
    $pdf->SetFont('Arial','B', 10);
    $pdf->Cell(40,5,utf8_decode('Visto:'),0,0,'L');
    $pdf->SetFont('Arial','', 10);
-   $pdf->MultiCell(140,5,utf8_decode(""));
+   $pdf->MultiCell(140,$l,utf8_decode(""));
 
    $pdf->SetX($x);
    $pdf->SetFont('Arial','B', 10);
    $pdf->Cell(40,5,utf8_decode('Ferramentas/Materiais:'),0,0,'L');
    $pdf->SetFont('Arial','', 10);
-   $pdf->MultiCell(140,5,utf8_decode($ferramentas));
+   $pdf->MultiCell(140,$l,utf8_decode($ferramentas));
 
    $pdf->Ln();
    $pdf->Ln();
@@ -175,7 +176,7 @@ $l=5; //DEFINE A ALTURA DA LINHA
    $pdf->SetFont('Arial','B', 10);
    $pdf->Cell(41,5,utf8_decode('Descrição dos serviços:'),0,0,'L');
    $pdf->SetFont('Arial','', 10);
-   $pdf->MultiCell(140,5,utf8_decode($descricao));
+   $pdf->MultiCell(140,$l,utf8_decode($descricao));
 
    $pdf->Ln();
    $pdf->Ln();
@@ -265,15 +266,15 @@ $l=5; //DEFINE A ALTURA DA LINHA
 
    $pdf->SetX($x);
    $pdf->SetFont('Arial','B', 10);
-   $pdf->Cell(40,5,utf8_decode('Visto:'),0,0,'L');
+   $pdf->Cell(40,$l,utf8_decode('Visto:'),0,0,'L');
    $pdf->SetFont('Arial','', 10);
    $pdf->MultiCell(140,5,utf8_decode(""));
 
    $pdf->SetX($x);
    $pdf->SetFont('Arial','B', 10);
-   $pdf->Cell(40,5,utf8_decode('Ferramentas/Materiais:'),0,0,'L');
+   $pdf->Cell(40,$l,utf8_decode('Ferramentas/Materiais:'),0,0,'L');
    $pdf->SetFont('Arial','', 10);
-   $pdf->MultiCell(140,5,utf8_decode($ferramentas));
+   $pdf->MultiCell(140,$l,utf8_decode($ferramentas));
 
    $pdf->Ln();
    $pdf->Ln();
