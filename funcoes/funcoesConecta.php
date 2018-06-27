@@ -1,5 +1,5 @@
 <?php
-	// Conexão de Banco MySQLi
+	// ConexÃ£o de Banco MySQLi
 	function bancoMysqli()
 	{
 		$servidor = 'localhost';
