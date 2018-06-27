@@ -269,12 +269,12 @@ $tot10_Andamento = mysqli_num_rows($categoria10_Andamento);
 
 
         <div class="col-md-offset-2 col-md-8">
-            <div class="card border border-secondary">
-                <table class="table table-borderless">
-                    <thead class="bg-dark">
-                    <tr>
-                        <th scope="col" class="text-center" style="color: white">Estatisticas</th>
-                        <th scope="col" class="text-center" style="color: white">Total</th>
+            <div class="table-responsive list_info">
+                <table class="table table-condensed">
+                    <thead>
+                    <tr class="list_menu">
+                        <td scope="col" class="text-center" style="color: white">Estatisticas</td>
+                        <td scope="col" class="text-center" style="color: white">Total</td>
 
 
                     </tr>
@@ -311,15 +311,15 @@ $tot10_Andamento = mysqli_num_rows($categoria10_Andamento);
 
 
         <div class="col-md-offset-2 col-md-8">
-            <div class="card border border-secondary">
-                <table class="table table-borderless">
-                    <thead class="bg-dark">
+            <div class="table-responsive list_info">
+                <table class="table table-condensed">
+                    <thead class="list_menu">
                     <tr>
-                        <th scope="col" class="text-center" style="color: white">Estatisticas</th>
-                        <th scope="col" class="text-center" style="color: white">Abertos</th>
-                        <th scope="col" class="text-center" style="color: white">Fechados</th>
-                        <th scope="col" class="text-center" style="color: white">Em Andamento</th>
-                        <th scope="col" class="text-center" style="color: white">Total</th>
+                        <td scope="col" class="text-center" style="color: white">Estatisticas</td>
+                        <td scope="col" class="text-center" style="color: white">Abertos</td>
+                        <td scope="col" class="text-center" style="color: white">Fechados</td>
+                        <td scope="col" class="text-center" style="color: white">Em Andamento</td>
+                        <td scope="col" class="text-center" style="color: white">Total</td>
 
 
                     </tr>
