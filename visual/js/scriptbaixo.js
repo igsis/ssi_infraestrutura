@@ -10,7 +10,7 @@
 	});
 
 // Script Confirmação de Exclusão
-	$('#confirmApagar').on('show.bs.modal', function (e)
+	$('#confirmaExclusao').on('show.bs.modal', function (e)
     {
         $title = $(e.relatedTarget).attr('data-title');
         $(this).find('.modal-title p').text($title);
@@ -22,7 +22,7 @@
         $(this).find('.modal-footer #confirm').data('form', form);
     });
     // Form confirm (yes/ok) handler, submits form
-    $('#confirmApagar').find('.modal-footer #confirm').on('click', function()
+    $('#confirmaExclusao').find('.modal-footer #confirm').on('click', function()
     {
         $(this).data('form').submit();
     });
