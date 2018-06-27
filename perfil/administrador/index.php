@@ -401,7 +401,7 @@ $tot10_Andamento = mysqli_num_rows($categoria10_Andamento);
                 </table>
             </div>
         </div>
-        <br><br><br><br>
+        <br><br><br><br><br>
 
     </div>
     </div>
