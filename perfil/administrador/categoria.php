@@ -98,7 +98,7 @@ if(isset($_POST['excluirCategoria']))
                                         echo "<td class='list_description'>
 											    <form method='POST' action='?perfil=administrador&p=categoria'>
 												    <input type='hidden' name='excluirCategoria' value='".$campo['id']."' />
-												    <button style='margin-top: 13px' class='btn btn-theme btn-block' type='button' data-toggle='modal' data-target='#confirmaExclusao' data-title='Excluir Categoria?' data-message='Deseja realmente excluir a categoria ".$campo['category']."?'>Remover</button>
+												    <button style='margin-top: 13px' class='btn btn-danger btn-block' type='button' data-toggle='modal' data-target='#confirmaExclusao' data-title='Excluir Categoria?' data-message='Deseja realmente excluir a categoria ".$campo['category']."?'>Remover</button>
 											    </form>
                                             </td>";
                                         echo "</tr>";
@@ -118,7 +118,7 @@ if(isset($_POST['excluirCategoria']))
                 </div>
             </div>
         </div>
-        <!--------------- Início Modal Adiona Categoria--------------->
+        <!--------------- Início Modal Adiciona Categoria--------------->
         <div class="modal fade" id="addCategoria" role="dialog" aria-labelledby="addCategoriaLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -138,7 +138,7 @@ if(isset($_POST['excluirCategoria']))
                 </div>
             </div>
         </div>
-        <!--------------- Fim Modal Adiona Categoria --------------->
+        <!--------------- Fim Modal Adiciona Categoria --------------->
 
         <!--------------- Início Modal Excluir Categoria--------------->
         <div class="modal fade" id="confirmaExclusao" role="dialog" aria-labelledby="confirmaExclusaoLabel" aria-hidden="true">
@@ -152,8 +152,8 @@ if(isset($_POST['excluirCategoria']))
                             <p>Realmente excluir?</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-success" id="confirm">Adicionar</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-danger" id="confirm">Excluir</button>
                         </div>
                     </form>
                 </div>
