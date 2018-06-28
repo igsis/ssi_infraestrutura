@@ -33,6 +33,21 @@ if(isset($_POST['editaFuncionario']))
 		$mensagem = "<font color='#FF0000'><strong>Erro ao atualizar! Tente novamente.</strong></font>";
 	}
 }
+
+if(isset($_POST['excluirFuncionario']))
+{
+    $id = $_POST['excluirFuncionario'];
+
+    $sql_exclui = "UPDATE employees SET published = 0 WHERE id = '$id'";
+    if(mysqli_query($con,$sql_exclui))
+    {
+        $mensagem = "<font color='#01DF3A'><strong>Excluido com sucesso!</strong></font>";
+    }
+    else
+    {
+        $mensagem = "<font color='#FF0000'><strong>Erro ao excluir! Tente novamente.</strong></font>";
+    }
+}
 ?>
 
 <section id="list_items" class="home-section bg-white">
@@ -60,6 +75,7 @@ if(isset($_POST['editaFuncionario']))
 										<td><strong>Funcionário</strong></td>
 										<td><strong>Função</strong></td>
 										<td width='20%'></td>
+                                        <td width='20%'></td>
 									</tr>
 								</thead>
 								<tbody>
@@ -81,6 +97,12 @@ if(isset($_POST['editaFuncionario']))
 											echo "<td class='list_description'>
 													<input type='hidden' name='editaFuncionario' value='".$campo['id']."' />
 													<input type ='submit' class='btn btn-theme btn-block' value='Editar'></td>";
+											echo "</form>";
+											echo "<form method='POST' action='?perfil=administrador&p=funcionario'>";
+											echo "<td class='list_description'>
+												    <input type='hidden' name='excluirFuncionario value='".$campo['id']."' />
+												    <button class='btn btn-danger btn-block' type='button' data-toggle='modal' data-target='#confirmaExclusao' data-title='Excluir Funcionário?' data-message='Deseja realmente excluir o funcionário ".$campo['name']."?'>Remover</button>
+                                                </td>";
 											echo "</form>";
 											echo "</tr>";
 										}
@@ -122,7 +144,28 @@ if(isset($_POST['editaFuncionario']))
 				</div>
 			</div>
 		</div>
-		<!--------------- Fim Modal Adiona Categoria --------------->
+		<!--------------- Fim Modal Adiciona Funcionário --------------->
+        <!--------------- Início Modal Excluir Funcionário --------------->
+        <div class="modal fade" id="confirmaExclusao" role="dialog" aria-labelledby="confirmaExclusaoLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Excluir?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Realmente excluir?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger" id="confirm">Excluir</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--------------- Fim Modal Excluir Categoria --------------->
 
-	</div>
+
+    </div>
 </section>
