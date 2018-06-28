@@ -24,10 +24,17 @@ if(isset($_POST['cadastra']))
 	if($problem_status_id == 2)
 	{
 		$closedate = date("Y-m-d H:i:s");
+        $inProgress = NULL;
 	}
+	elseif ($problem_status_id == 3)
+    {
+        $inProgress = date("Y-m-d H:i:s");
+        $closedate = NULL;
+    }
 	else
 	{
-		$closedate = NULL;
+        $inProgress = NULL;
+	    $closedate = NULL;
 	}
 
 	$sql = "INSERT INTO `problems`(
@@ -41,6 +48,7 @@ if(isset($_POST['cadastra']))
 	`description`,
 	`solution`,
 	`startDate`,
+	`inProgress`,
 	`closedate`,
 	`problem_status_id`,
 	`administrators_id`) VALUES (
@@ -54,6 +62,7 @@ if(isset($_POST['cadastra']))
 	'$description',
 	'$solution',
 	'$startDate',
+	'$inProgress',
 	'$closedate',
 	'$problem_status_id',
 	'$idAdm')";
@@ -83,14 +92,20 @@ if(isset($_POST['gravar']))
 	$solution = $_POST['solution'];
 	if($problem_status_id == 2)
 	{
-		$closedate = date("Y-m-d H:i:s");
+		$closedate = ", closedate = '".date('Y-m-d H:i:s')."'";
+        $inProgress = "";
 	}
-	else
+	elseif($problem_status_id == 3)
 	{
-		$closedate = NULL;
+        $inProgress = ", inProgress = '".date('Y-m-d H:i:s')."'";
+        $closedate = "";
 	}
+	else {
+        $inProgress = "";
+        $closedate = "";
+    }
 
-	$sql = "UPDATE problems SET administrators_id = '$administrators_id', priorities_id = '$priorities_id', problem_status_id = '$problem_status_id', categories_id = '$categories_id', description = '$description', solution = '$solution', closedate = '$closedate'";
+	$sql = "UPDATE problems SET administrators_id = '$administrators_id', priorities_id = '$priorities_id', problem_status_id = '$problem_status_id', categories_id = '$categories_id', description = '$description', solution = '$solution' $inProgress $closedate WHERE id = '$idChamado'";
 	if(mysqli_query($con,$sql))
 	{
 		$mensagem = "<font color='#01DF3A'><strong>Atualizado com sucesso!</strong></font>";
