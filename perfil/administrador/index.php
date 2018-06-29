@@ -5,8 +5,6 @@ $con = bancoMysqli();
                                                     // STATUS
 
 $aberto = "SELECT id FROM problems WHERE administrators_id='$id1' AND problem_status_id ='1' AND MONTH(startDate) = '$mes' "; // Registro de chamados em abertos
-
-$con = bancoMysqli();
 $query1 = mysqli_query($con,$aberto);
 $qtde1 = mysqli_num_rows($query1);
 
@@ -258,6 +256,15 @@ $tot10_Andamento = mysqli_num_rows($categoria10_Andamento);
             </div>
         </div>
 
+        <form class="form-inline" action="?perfil=administrador&p=busca_result_relatorio" method="post">
+            <div class="form-group">
+                <input name="per" type="date" class="form-control" placeholder="">
+            </div>
+            <div class="form-group">
+                <input name="per2" type="date" class="form-control" placeholder="">
+            </div>
+            <button type="submit" class="btn btn-success">Buscar</button>
+        </form>
 
         <div class="row">
             <div class="col-md-offset-2 col-md-8">
