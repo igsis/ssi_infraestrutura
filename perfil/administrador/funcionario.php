@@ -98,12 +98,12 @@ if(isset($_POST['excluirFuncionario']))
 													<input type='hidden' name='editaFuncionario' value='".$campo['id']."' />
 													<input type ='submit' class='btn btn-theme btn-block' value='Editar'></td>";
 											echo "</form>";
-											echo "<form method='POST' action='?perfil=administrador&p=funcionario'>";
 											echo "<td class='list_description'>
-												    <input type='hidden' name='excluirFuncionario value='".$campo['id']."' />
-												    <button class='btn btn-danger btn-block' type='button' data-toggle='modal' data-target='#confirmaExclusao' data-title='Excluir Funcionário?' data-message='Deseja realmente excluir o funcionário ".$campo['name']."?'>Remover</button>
-                                                </td>";
-											echo "</form>";
+                                                    <form method='POST' action='?perfil=administrador&p=funcionario'>
+                                                        <input type='hidden' name='excluirFuncionario' value='".$campo['id']."' />
+                                                        <button style='margin-top: 13px' class='btn btn-danger btn-block' type='button' data-toggle='modal' data-target='#confirmaExclusao' data-title='Excluir Funcionário?' data-message='Deseja realmente excluir o funcionário ".$campo['name']."?'>Remover</button>
+                                                    </form>
+                                                  </td>";
 											echo "</tr>";
 										}
 									}
