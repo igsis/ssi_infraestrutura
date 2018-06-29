@@ -6,7 +6,7 @@ require_once("../funcoes/funcoesConecta.php");
 require_once("../funcoes/funcoesGerais.php");
 
 //CONEXÃO COM BANCO DE DADOS
-$conexao = bancoMysqli();
+$con = bancoMysqli();
 
 session_start();
 
@@ -21,7 +21,7 @@ function Header()
    $this->Image('../visual/images/logo_smc.jpg',170,6);
    // Line break
    $this->Ln(20);
-}
+} 
 
 // Simple table
 function BasicTable($header, $data)
@@ -70,8 +70,10 @@ $idFuncionario = $_POST['idFuncionario'];
 
 $chamado = recuperaDados("problems","id",$idChamado);
 $category = recuperaDados("categories","id",$chamado['categories_id']);
-$tool = recuperaDados("employees_problems","problems_id",$idFuncionario);
 $user = recuperaDados("users","id",$chamado['users_id']);
+$sql_funcionario = "SELECT * from employees_problems WHERE employee_id = $idFuncionario AND problems_id = $idChamado";
+$query = mysqli_query($con,$sql_funcionario);
+$tool = mysqli_fetch_array($query);
 $funcionario = recuperaDados("employees","id",$tool['employee_id']);
 
 //chamado
@@ -79,10 +81,9 @@ $numero = $chamado["id"];
 $dataCriacao = exibirDataHoraBr($chamado['startDate']);
 $servico = $category['category'];
 $descricao = $chamado['description'];
-$ferramentas = $tool['toolMaterial'];
 $atendente = $funcionario['name'];
 $funcaoAtendente = $funcionario['role'];
-
+$ferramenta = $tool['toolMaterial'];
 
 //local-user
 $local = $user["local"];
@@ -163,7 +164,7 @@ $l=5; //DEFINE A ALTURA DA LINHA
    $pdf->SetFont('Arial','B', 10);
    $pdf->Cell(40,5,utf8_decode('Ferramentas/Materiais:'),0,0,'L');
    $pdf->SetFont('Arial','', 10);
-   $pdf->MultiCell(140,$l,utf8_decode($ferramentas));
+   $pdf->MultiCell(140,$l,utf8_decode($ferramenta));
 
    $pdf->Ln();
    $pdf->Ln();
@@ -274,7 +275,7 @@ $l=5; //DEFINE A ALTURA DA LINHA
    $pdf->SetFont('Arial','B', 10);
    $pdf->Cell(40,$l,utf8_decode('Ferramentas/Materiais:'),0,0,'L');
    $pdf->SetFont('Arial','', 10);
-   $pdf->MultiCell(140,$l,utf8_decode($ferramentas));
+   $pdf->MultiCell(140,$l,utf8_decode($ferramenta));
 
    $pdf->Ln();
    $pdf->Ln();
