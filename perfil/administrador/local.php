@@ -73,6 +73,21 @@ if(isset($_POST['editar']))
 		$mensagem = "<font color='#FF0000'><strong>Erro ao atualizar! Tente novamente.</strong></font>";
 	}
 }
+
+if(isset($_POST['excluirLocal']))
+{
+    $id = $_POST['excluirLocal'];
+
+    $sql_exclui = "UPDATE users SET published = 0 WHERE id = '$id'";
+    if(mysqli_query($con,$sql_exclui))
+    {
+        $mensagem = "<font color='#01DF3A'><strong>Excluido com sucesso!</strong></font>";
+    }
+    else
+    {
+        $mensagem = "<font color='#FF0000'><strong>Erro ao excluir! Tente novamente.</strong></font>";
+    }
+}
 ?>
 <section id="list_items" class="home-section bg-white">
 	<div class="container"><?php include 'includes/menu.php'; ?>
@@ -105,13 +120,17 @@ if(isset($_POST['editar']))
 										<td><strong>Endereço</strong></td>
 										<td><strong>Região</strong></td>
 										<td width='15%'></td>
+										<td width='15%'></td>
 									</tr>
 								</thead>
 								<tbody>
 									<?php
 									$con = bancoMysqli();
 									$idAdm = $_SESSION['idAdm'];
-									$sql = "SELECT * FROM users INNER JOIN administrators_users ON users.id = administrators_users.users_id WHERE administrators_users.admininstrators_id = $idAdm";
+									$sql = "SELECT * FROM users
+                                            INNER JOIN administrators_users ON users.id = administrators_users.users_id
+                                            WHERE administrators_users.admininstrators_id = $idAdm AND
+                                            users.published = '1'";
 									$query = mysqli_query($con,$sql);
 									$num = mysqli_num_rows($query);
 									if($num > 0)
@@ -133,13 +152,19 @@ if(isset($_POST['editar']))
 														<input type='submit' value='Carregar' class='btn btn-success btn-block' style='border-radius: 5px;'>
 													</form>
 												</td>";
+                                            echo "<td class='list_description'>
+											        <form method='POST' action='?perfil=administrador&p=local'>
+												        <input type='hidden' name='excluirLocal' value='".$campo['id']."' />
+												        <button class='btn btn-danger btn-block' type='button' data-toggle='modal' data-target='#confirmaExclusao' data-title='Excluir Local?' data-message='Deseja realmente excluir o Local ".$campo['local']."?'>Remover</button>
+											        </form>
+                                                  </td>";
 											echo "</tr>";
 										}
 									}
 									else
 									{
 										echo "<tr>";
-										echo "<td class='list_description'>Não há chamados registrados.</td>";
+										echo "<td class='list_description'>Não há locais cadastrados.</td>";
 										echo "</tr>";
 									}
 									?>
@@ -150,5 +175,27 @@ if(isset($_POST['editar']))
 				</div>
 			</div>
 		</div>
+
+        <!--------------- Início Modal Excluir Local --------------->
+        <div class="modal fade" id="confirmaExclusao" role="dialog" aria-labelledby="confirmaExclusaoLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Excluir?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Realmente excluir?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger" id="confirm">Excluir</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--------------- Fim Modal Excluir Local --------------->
+
 	</div>
 </section>

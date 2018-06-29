@@ -164,7 +164,7 @@ if(isset($_POST['excluirFuncionario']))
                 </div>
             </div>
         </div>
-        <!--------------- Fim Modal Excluir Categoria --------------->
+        <!--------------- Fim Modal Excluir Funcionário --------------->
 
 
     </div>

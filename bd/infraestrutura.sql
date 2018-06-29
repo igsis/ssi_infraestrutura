@@ -81,8 +81,10 @@ INSERT INTO `administrators_users` (`users_id`, `admininstrators_id`) VALUES
 CREATE TABLE `categories` (
   `id` int(2) NOT NULL,
   `category` varchar(120) NOT NULL,
-  `published` tinyint(1) NOT NULL
+  `published` tinyint(1) DEFAULT '1' NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 
 --
 -- Extraindo dados da tabela `categories`
@@ -111,7 +113,7 @@ CREATE TABLE `employees` (
   `id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
   `role` varchar(45) NOT NULL,
-  `published` tinyint(1) NOT NULL
+  `published` tinyint(1) DEFAULT '1' NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -317,19 +319,20 @@ CREATE TABLE `users` (
   `historicalBuilding` tinyint(1) DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateLastAccess` datetime DEFAULT NULL,
-  `user_status_id` int(1) NOT NULL
+  `user_status_id` int(1) NOT NULL,
+  `published` tinyint(1) DEFAULT '1' NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `password`, `local`, `phone`, `email`, `contact`, `address`, `idRegion`, `operatingHours`, `historicalBuilding`, `dateCreated`, `dateLastAccess`, `user_status_id`) VALUES
-(1, 'lorelei', '957eee38b5090493f53f22f926219021', 'Teatro Mundo da Lua', '(11) 3397-0146', 'teste@teste.com', 'Lucas', 'rua abc, 123', 1, '15:00/19:00', 0, '2018-06-23 13:00:00', '2018-06-24 11:30:21', 1),
-(4, 'teste2', '957eee38b5090493f53f22f926219021', 'Teatro Mundo da', '(11) 3397-0146', 'teste1@teste.com', 'Teste', 'rua abc, 123', 1, '15:00/19:00', 0, '2018-06-23 13:00:00', '2018-06-24 11:30:21', 1),
-(7, 'teste2', '7390ff71652df1ebac786e07abe0be0d', 'Teste de Lorelei', '1133970110', 'stidesenvolvimento@prefeitura.sp.gov.br', 'Lore', 'Avenida São João, 473', 4, 'De segunda à sexta das 10h às 18. De sábado e domingo das 15h às 22h', 1, '2018-06-25 11:37:38', NULL, 1),
-(8, 'teste3', '7390ff71652df1ebac786e07abe0be0d', 'Biblioteca Mário', '1133970146', 'sti@prefeitura.sp.gov.br', 'Lorelei', 'Avenida São João, 473 - 9º andar - República', 5, 'De segunda à sexta das 10h às 18. De sábado e domingo das 15h às 22h', 1, '2018-06-25 11:44:15', NULL, 1),
-(13, 'ttt', '7390ff71652df1ebac786e07abe0be0d', 'ttt', '111', '111@111.com', '111c', 'Avenida São João, 473', 5, 'De segunda à sexta das 10h às 18. De sábado e domingo das 15h às 22h', 1, '2018-06-25 11:49:20', NULL, 1);
+INSERT INTO `users` (`id`, `login`, `password`, `local`, `phone`, `email`, `contact`, `address`, `idRegion`, `operatingHours`, `historicalBuilding`, `dateCreated`, `dateLastAccess`, `user_status_id`, `published`) VALUES
+(1, 'lorelei', '957eee38b5090493f53f22f926219021', 'Teatro Mundo da Lua', '(11) 3397-0146', 'teste@teste.com', 'Lucas', 'rua abc, 123', 1, '15:00/19:00', 0, '2018-06-23 13:00:00', '2018-06-24 11:30:21', 1, 1),
+(4, 'teste2', '957eee38b5090493f53f22f926219021', 'Teatro Mundo da', '(11) 3397-0146', 'teste1@teste.com', 'Teste', 'rua abc, 123', 1, '15:00/19:00', 0, '2018-06-23 13:00:00', '2018-06-24 11:30:21', 1, 1),
+(7, 'teste2', '7390ff71652df1ebac786e07abe0be0d', 'Teste de Lorelei', '1133970110', 'stidesenvolvimento@prefeitura.sp.gov.br', 'Lore', 'Avenida São João, 473', 4, 'De segunda à sexta das 10h às 18. De sábado e domingo das 15h às 22h', 1, '2018-06-25 11:37:38', NULL, 1, 1),
+(8, 'teste3', '7390ff71652df1ebac786e07abe0be0d', 'Biblioteca Mário', '1133970146', 'sti@prefeitura.sp.gov.br', 'Lorelei', 'Avenida São João, 473 - 9º andar - República', 5, 'De segunda à sexta das 10h às 18. De sábado e domingo das 15h às 22h', 1, '2018-06-25 11:44:15', NULL, 1, 1),
+(13, 'ttt', '7390ff71652df1ebac786e07abe0be0d', 'ttt', '111', '111@111.com', '111c', 'Avenida São João, 473', 5, 'De segunda à sexta das 10h às 18. De sábado e domingo das 15h às 22h', 1, '2018-06-25 11:49:20', NULL, 1, 1);
 
 -- --------------------------------------------------------
 
