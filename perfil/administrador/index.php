@@ -256,15 +256,20 @@ $tot10_Andamento = mysqli_num_rows($categoria10_Andamento);
             </div>
         </div>
 
+        <hr>
+
         <form class="form-inline" action="?perfil=administrador&p=busca_result_relatorio" method="post">
             <div class="form-group">
+                <label>Período</label>
                 <input name="per" type="date" class="form-control" placeholder="">
             </div>
             <div class="form-group">
                 <input name="per2" type="date" class="form-control" placeholder="">
             </div>
-            <button type="submit" class="btn btn-success">Buscar</button>
+            <button type="submit" class="btn btn-theme btn-sm">Buscar</button>
         </form>
+
+        <hr>
 
         <div class="row">
             <div class="col-md-offset-2 col-md-8">

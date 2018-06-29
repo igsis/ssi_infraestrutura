@@ -1,7 +1,7 @@
 <?php
 $con = bancoMysqli();
 $id1 = $_SESSION['idAdm'];
-$data = date('d/m/Y');
+
 
 
 if (isset($_POST['per']) && ($_POST['per'] != '' AND $_POST['per2'])  && ($_POST['per2'] != '')){
@@ -10,8 +10,8 @@ if (isset($_POST['per']) && ($_POST['per'] != '' AND $_POST['per2'])  && ($_POST
     $pesquisar2 = $_POST['per2'];
 
     //Selecionar  os itens da página
-    $sqlBusca3 = "SELECT * FROM problems WHERE administrators_id = '$id1' AND (startDate BETWEEN '$pesquisar' AND '$pesquisar2') ";
-    $result = mysqli_query($con , $sqlBusca3);
+    $sqlBusca = "SELECT * FROM problems WHERE administrators_id = '$id1' AND (startDate BETWEEN '$pesquisar' AND '$pesquisar2') ";
+    $result = mysqli_query($con , $sqlBusca);
 
 }
 
@@ -57,7 +57,7 @@ $mensagem = "Nenhum resultado foi encontrado.";
 		<div class="form-group">
 			<h4>Busca de Chamados</h4>
 			<h5><?php if(isset($mensagem)){echo $mensagem;}; ?></h5>
-			<h5><a href="?perfil=usuario&p=busca">Fazer outra busca</a></h5>
+			<h5><a href="?perfil=administrador&p=index">Fazer outra busca</a></h5>
             <form method="POST" action="?perfil=administrador&p=excelEspecifica">
                         <div class="btn-group mr-2">
                             <button type="submit" class="btn btn-theme btn-block btn-sm position-relative" data-dismiss="modal">Gerar Planilha  </button>
@@ -99,7 +99,8 @@ $mensagem = "Nenhum resultado foi encontrado.";
 								echo "<td class='list_description'>".$x[$h]['startDate']."</td>";
 								echo "<td class='list_description'>".$x[$h]['status']."</td>";
 								echo "<td class='list_description'>
-										<form method='POST' action='?perfil=administrador&p=detalhes'>
+								</form>		
+								<form method='POST' action='?perfil=administrador&p=detalhes'>
 											<input type='hidden' name='idChamado' value='".$x[$h]['id']."' />
 											<input type ='submit' class='btn btn-theme btn-block' value='carregar'>
 										</form>
@@ -112,6 +113,6 @@ $mensagem = "Nenhum resultado foi encontrado.";
 				</div>
 			</div>
 		</div>
-        </form>
+
 	</div>
 </section>
