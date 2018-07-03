@@ -2,7 +2,10 @@
 $con = bancoMysqli();
 $id1 = $_SESSION['idAdm'];
 
+$server = "http://"."localhost:63342"."/ssi_infraestrutura";
+$http = $server."/pdf/";
 
+$link02 = $http."excelEspecifica.php";
 
 if (isset($_POST['per']) && ($_POST['per'] != '' AND $_POST['per2'])  && ($_POST['per2'] != '')){
 
@@ -58,7 +61,7 @@ $mensagem = "Nenhum resultado foi encontrado.";
 			<h4>Busca de Chamados</h4>
 			<h5><?php if(isset($mensagem)){echo $mensagem;}; ?></h5>
 			<h5><a href="?perfil=administrador&p=index">Fazer outra busca</a></h5>
-            <form method="POST" action="?perfil=administrador&p=excelEspecifica">
+            <form method="POST" action="<?php echo $link02; ?>">
                         <div class="btn-group mr-2">
                             <button type="submit" class="btn btn-theme btn-block btn-sm position-relative" data-dismiss="modal">Gerar Planilha  </button>
                         </div>
@@ -87,9 +90,9 @@ $mensagem = "Nenhum resultado foi encontrado.";
 							for($h = 0; $h < $x['num']; $h++)
 							{
 								echo "<tr>";
-								$id = $x[$h]["id"];
+								$id = $x[$h]['id'];
                                 echo "<td class='list_description'>";
-                                echo "<input type='checkbox' name='relatorio[$id]' value='1'>";
+                                echo "<input type='checkbox' name='relatorio[$id]'>";
                                 echo "</td>";
 								echo "<td class='list_description'>".$x[$h]['id']."</td>";
 								echo "<td class='list_description'>".$x[$h]['local']."</td>";
