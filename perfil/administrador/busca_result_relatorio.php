@@ -2,7 +2,7 @@
 $con = bancoMysqli();
 $id1 = $_SESSION['idAdm'];
 
-$server = "http://"."localhost:63342"."/ssi_infraestrutura";
+$server = "http://".$_SERVER['SERVER_NAME']."/ssi_infraestrutura";
 $http = $server."/pdf/";
 
 $link02 = $http."excelEspecifica.php";
@@ -92,7 +92,7 @@ $mensagem = "Nenhum resultado foi encontrado.";
 								echo "<tr>";
 								$id = $x[$h]['id'];
                                 echo "<td class='list_description'>";
-                                echo "<input type='checkbox' name='relatorio[$id]'>";
+                                echo "<input type='checkbox' name='relatorio[$id]' value='1'>";
                                 echo "</td>";
 								echo "<td class='list_description'>".$x[$h]['id']."</td>";
 								echo "<td class='list_description'>".$x[$h]['local']."</td>";

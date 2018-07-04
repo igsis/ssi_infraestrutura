@@ -8,6 +8,8 @@ require_once("../include/phpexcel/Classes/PHPExcel.php");
 //CONEXÃO COM BANCO DE DADOS
 $con = bancoMysqli();
 
+if(isset($_POST['relatorio'])){
+
 // Create new PHPExcel object
 $objPHPExcel = new PHPExcel();
 // Set document properties
@@ -22,7 +24,6 @@ $objPHPExcel->getProperties()->setDescription("Gerado automaticamente a partir d
 $objPHPExcel->getProperties()->setKeywords("office 2007 openxml php");
 $objPHPExcel->getProperties()->setCategory("Relatório de Chamados");
 
-if(isset($_POST['relatorio'])){
 // Add some data
 $objPHPExcel->setActiveSheetIndex(0)
     ->setCellValue('A1', 'Chamado nº')
@@ -50,7 +51,7 @@ $objPHPExcel->getActiveSheet()->getStyle('A1:L1')->applyFromArray(
 
     foreach($_POST['relatorio'] as $id => $relatorio){
 //Dados
-$sql = "SELECT * FROM problems WHERE id = '$id' LIMIT 1";
+$sql = "SELECT * FROM problems WHERE id = '$relatorio' LIMIT 1";
 $query = mysqli_query($con,$sql);
 $i = 2; // para começar a gravar os dados na segunda linha
 while($row = mysqli_fetch_array($query)) {
