@@ -2,7 +2,7 @@
 $con = bancoMysqli();
 $id1 = $_SESSION['idAdm'];
 
-$server = "http://".$_SERVER['SERVER_NAME']."/ssi_infraestrutura";
+$server = "http://"."localhost:63342"."/ssi_infraestrutura";
 $http = $server."/pdf/";
 
 $link02 = $http."excelEspecifica.php";
@@ -13,7 +13,7 @@ if (isset($_POST['per']) && ($_POST['per'] != '' AND $_POST['per2'])  && ($_POST
     $pesquisar2 = $_POST['per2'];
 
     //Selecionar  os itens da página
-    $sqlBusca = "SELECT * FROM problems WHERE administrators_id = '$id1' AND (startDate BETWEEN '$pesquisar' AND '$pesquisar2') ";
+    $sqlBusca = "SELECT * FROM problems WHERE administrators_id = '$id1' AND (startDate BETWEEN '$pesquisar  00:00:00.000000' AND '$pesquisar2  23:59:00.000000') ";
     $result = mysqli_query($con , $sqlBusca);
 
 }
@@ -90,7 +90,7 @@ $mensagem = "Nenhum resultado foi encontrado.";
 							for($h = 0; $h < $x['num']; $h++)
 							{
 								echo "<tr>";
-								$id = $x[$h]['id'];
+                                $id = $x[$h]['id'];
                                 echo "<td class='list_description'>";
                                 echo "<input type='checkbox' name='relatorio[$id]' value='1'>";
                                 echo "</td>";
