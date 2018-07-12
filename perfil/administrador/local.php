@@ -78,7 +78,7 @@ if(isset($_POST['excluirLocal']))
 {
     $id = $_POST['excluirLocal'];
 
-    $sql_exclui = "UPDATE users SET published = 0 WHERE id = '$id'";
+    $sql_exclui = "UPDATE users SET user_status_id = '2' WHERE id = '$id'";
     if(mysqli_query($con,$sql_exclui))
     {
         $mensagem = "<font color='#01DF3A'><strong>Excluido com sucesso!</strong></font>";
@@ -130,7 +130,7 @@ if(isset($_POST['excluirLocal']))
 									$sql = "SELECT * FROM users
                                             INNER JOIN administrators_users ON users.id = administrators_users.users_id
                                             WHERE administrators_users.admininstrators_id = $idAdm AND
-                                            users.published = '1'";
+                                            users.user_status_id = '1'";
 									$query = mysqli_query($con,$sql);
 									$num = mysqli_num_rows($query);
 									if($num > 0)
