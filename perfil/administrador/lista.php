@@ -21,8 +21,7 @@ $idAdm= $_SESSION['idAdm'];
 								<td>Descrição</td>
 								<td>Data Abertura</td>
 								<td>Status</td>
-								<td></td>
-								<td width="10%"></td>
+								<td width="5%"></td>
 							</tr>
 						</thead>
 						<tbody>
@@ -54,13 +53,6 @@ $idAdm= $_SESSION['idAdm'];
 												<input type ='submit' class='btn btn-theme btn-block' value='carregar'>
 											</form>
 										</td>";
-									echo "
-									<td class='list_description'>
-										<form method='POST' action='?perfil=administrador&p=impressao_os'>
-											<input type='hidden' name='idChamado' value='".$campo['id']."' />
-											<input type ='submit' class='btn btn-theme btn-block' value='Emitir OS'>
-										</form>
-									</td>";
 									echo "</tr>";
 								}
 							}

@@ -1,9 +1,9 @@
 <?php
 $con = bancoMysqli();
 
-if(isset($_POST['idChamado']))
+if(isset($_GET['idChamado']))
 {
-	$idChamado = $_POST['idChamado'];
+	$idChamado = $_GET['idChamado'];
 }
 
 if(isset($_POST['idFuncionario']))

@@ -1,6 +1,10 @@
 <?php
 $con = bancoMysqli();
 
+$idChamado = $_GET['idChamado'];
+
+$chamado = recuperaDados("problems", "id", $idChamado);
+
 if(isset($_POST['idChamado']))
 {
 	$idChamado = $_POST['idChamado'];
@@ -168,6 +172,9 @@ $tool = recuperaDados("employees_problems","problems_id",$idChamado);
 ?>
 <section id="list_items" class="home-section bg-white">
 	<div class="container"><?php include 'includes/menu.php'; ?>
+		<div align="right" class="col-md-offset-2 col-md-7">
+			<a href="?perfil=administrador&p=impressao_os&idChamado=<?=$idChamado?>"><i class="fa fa-print" aria-hidden="true"></i></a>
+		</div>
 		<div class="form-group">
 			<h3>Detalhes do Chamado Nº <?php echo $idChamado ?></h3>
 			<br/>
