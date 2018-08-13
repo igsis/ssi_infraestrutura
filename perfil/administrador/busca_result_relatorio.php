@@ -65,7 +65,7 @@ else
 			<h5><a href="?perfil=administrador&p=index">Fazer outra busca</a></h5>
             <form method="POST" action="<?php echo $link02; ?>">
                         <div class="btn-group mr-2">
-                            <button type="submit" class="btn btn-theme btn-md btn-block position-relative" style="border-radius: 30px;">&nbsp; Planilha Especifica  <img src="perfil\administrador\excel.png" style="height: 20px"/> &nbsp;&nbsp;</button>
+                            <button type="submit" class="btn btn-theme btn-md btn-block position-relative" style="border-radius: 30px;">&nbsp; Planilha Específica &nbsp;&nbsp;</button>
                         </div>
 
                 <br><br>
@@ -102,9 +102,10 @@ else
                                     <td class='list_description'><?php echo $x[$h]['contact']; ?></td>
                                     <td class='list_description'><?php echo $x[$h]['category']; ?></td>
                                     <td class='list_description'><?php echo $x[$h]['description']; ?></td>
-                                    <td class='list_description'><?php echo $x[$h]['status']; ?></td>
                                     <td class='list_description'><?php echo $x[$h]['startDate']; ?></td>
-            </form>
+            </form>                 <td class='list_description'><?php echo $x[$h]['status']; ?></td>
+
+
                                     <td class='list_description'>
             <?php echo "
             <form method='POST' action='?perfil=administrador&p=detalhes'>
