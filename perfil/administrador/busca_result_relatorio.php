@@ -2,7 +2,7 @@
 $con = bancoMysqli();
 $id1 = $_SESSION['idAdm'];
 
-$server = "http://"."localhost:63342"."/ssi_infraestrutura";
+$server = "http://".$_SERVER['SERVER_NAME']."/ssi_infraestrutura"; 
 $http = $server."/pdf/";
 
 $link02 = $http."excelEspecifica.php";
